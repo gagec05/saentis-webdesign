@@ -1,0 +1,14 @@
+Säntis Webdesign
+Version 1.1
+
+Optimierungen:
+- Responsive Layout für Desktop, Tablet und Mobile bereinigt
+- Mobile Über-mich-Bereich ohne horizontalen Überlauf
+- SavaWood Desktop-/Mobile-Preview kompakter und sauberer skaliert
+- Positionierung kompakter und visuell dichter
+- Leistungsbereich und Device-Preview verfeinert
+- Prozess-Hover nur auf echten Hover-Geräten
+- Kontaktbereich neu ausbalanciert
+- Header/Navigation besser proportioniert
+- CSS strukturiert und doppelte Override-Blöcke entfernt
+- Cache-Version auf 1.1 gesetzt
