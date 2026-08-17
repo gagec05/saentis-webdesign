@@ -171,6 +171,14 @@ button { font: inherit; }
     transform: scaleX(1);
 }
 
+.nav-links a.active {
+    color: #fff;
+}
+
+.nav-links a.active::after {
+    transform: scaleX(1);
+}
+
 .nav-cta {
     display: inline-flex;
     align-items: center;
@@ -1008,17 +1016,19 @@ button { font: inherit; }
 .case-link {
     display: inline-flex;
     align-items: center;
-    gap: 12px;
+    gap: 0;
     padding-bottom: 7px;
     border-bottom: 1px solid #35516f;
     font-weight: 800;
     transition: color .22s var(--ease), border-color .22s var(--ease);
 }
 
-.case-link span { color: var(--cyan); }
+.case-link span {
+    display: none;
+}
 
 .case-link:is(:hover,:focus-visible) {
-    color: var(--cyan);
+    color: #fff;
     border-color: var(--cyan);
 }
 

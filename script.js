@@ -17,6 +17,19 @@ const revealElemente =
 const processListe =
     document.querySelector(".process-list");
 
+const navLinks =
+    document.querySelectorAll(
+        ".nav-links a[href^='#']"
+    );
+
+const navBereiche = [
+    document.getElementById("leistungen"),
+    document.getElementById("referenzen"),
+    document.getElementById("ablauf"),
+    document.getElementById("ueber-mich")
+].filter(Boolean);
+
+
 /* ==================================================
    2. HEADER BEIM SCROLLEN
 ================================================== */
@@ -40,6 +53,7 @@ window.addEventListener(
 );
 
 headerAktualisieren();
+
 
 /* ==================================================
    3. MOBILE NAVIGATION
@@ -124,6 +138,7 @@ if (
     );
 }
 
+
 /* ==================================================
    4. REVEAL ANIMATIONEN
 ================================================== */
@@ -181,6 +196,7 @@ if (
         }
     );
 }
+
 
 /* ==================================================
    5. PROZESS-FORTSCHRITT BEIM SCROLLEN
@@ -260,3 +276,176 @@ window.addEventListener(
 );
 
 processFortschrittAktualisieren();
+
+
+/* ==================================================
+   6. AKTIVER NAVIGATIONSPUNKT BEIM SCROLLEN
+================================================== */
+
+let navAnimationFrame =
+    null;
+
+function aktivenNavLinkSetzen(
+    bereichId
+) {
+
+    navLinks.forEach(
+        function (link) {
+
+            const ziel =
+                link.getAttribute(
+                    "href"
+                );
+
+            const istAktiv =
+                ziel ===
+                "#" + bereichId;
+
+            link.classList.toggle(
+                "active",
+                istAktiv
+            );
+
+            if (istAktiv) {
+
+                link.setAttribute(
+                    "aria-current",
+                    "location"
+                );
+
+            } else {
+
+                link.removeAttribute(
+                    "aria-current"
+                );
+            }
+        }
+    );
+}
+
+
+function navigationAktualisieren() {
+
+    navAnimationFrame =
+        null;
+
+    if (
+        navBereiche.length === 0
+    ) {
+        return;
+    }
+
+    const viewportHoehe =
+        window.innerHeight ||
+        document.documentElement.clientHeight;
+
+    /*
+       Die gedachte Aktiv-Linie liegt
+       etwa bei 32 % der Bildschirmhöhe.
+    */
+
+    const aktivLinie =
+        viewportHoehe * 0.32;
+
+    let aktiverBereich =
+        null;
+
+
+    navBereiche.forEach(
+        function (bereich) {
+
+            const rect =
+                bereich.getBoundingClientRect();
+
+            if (
+                rect.top <= aktivLinie &&
+                rect.bottom > aktivLinie
+            ) {
+
+                aktiverBereich =
+                    bereich;
+            }
+        }
+    );
+
+
+    /*
+       Oberhalb des ersten Navi-Bereichs
+       wird kein Menüpunkt markiert.
+    */
+
+    if (!aktiverBereich) {
+
+        const ersterBereich =
+            navBereiche[0]
+                .getBoundingClientRect();
+
+        if (
+            ersterBereich.top >
+            aktivLinie
+        ) {
+
+            navLinks.forEach(
+                function (link) {
+
+                    link.classList.remove(
+                        "active"
+                    );
+
+                    link.removeAttribute(
+                        "aria-current"
+                    );
+                }
+            );
+
+            return;
+        }
+
+
+        /*
+           Falls wir bereits unterhalb
+           des letzten Bereichs sind,
+           bleibt der letzte Punkt aktiv.
+        */
+
+        aktiverBereich =
+            navBereiche[
+                navBereiche.length - 1
+            ];
+    }
+
+
+    aktivenNavLinkSetzen(
+        aktiverBereich.id
+    );
+}
+
+
+function navScrollAnfordern() {
+
+    if (
+        navAnimationFrame !==
+        null
+    ) {
+        return;
+    }
+
+    navAnimationFrame =
+        window.requestAnimationFrame(
+            navigationAktualisieren
+        );
+}
+
+
+window.addEventListener(
+    "scroll",
+    navScrollAnfordern,
+    { passive: true }
+);
+
+window.addEventListener(
+    "resize",
+    navScrollAnfordern
+);
+
+navigationAktualisieren();

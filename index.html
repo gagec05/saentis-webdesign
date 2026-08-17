@@ -1,30 +1,210 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Säntis Webdesign entwickelt individuelle, schnelle und professionelle Websites für Schweizer KMU und Handwerksbetriebe.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- ==================================================
+       SEO
+  ================================================== -->
+
+  <title>Webdesign St. Gallen für KMU | Säntis Webdesign</title>
+
+  <meta
+    name="description"
+    content="Säntis Webdesign entwickelt individuelle, schnelle und professionelle Websites für KMU und Handwerksbetriebe in St. Gallen und der Ostschweiz."
+  >
+
+  <meta name="robots" content="index, follow">
+
+  <link
+    rel="canonical"
+    href="https://saentiswebdesign.ch/"
+  >
+
+
+  <!-- ==================================================
+       BROWSER / BRANDING
+  ================================================== -->
+
   <meta name="theme-color" content="#07111f">
 
-  <title>Säntis Webdesign | Websites für Schweizer KMU</title>
+  <link
+    rel="icon"
+    type="image/png"
+    href="/Bilder/logo-mark.png"
+  >
 
-  <link rel="preload" href="Bilder/saentis-logo-transparent.png" as="image">
-  <link rel="stylesheet" href="style.css?v=1.1">
+  <link
+    rel="apple-touch-icon"
+    href="/Bilder/logo-mark.png"
+  >
+
+
+  <!-- ==================================================
+       OPEN GRAPH
+       WhatsApp / LinkedIn / Facebook etc.
+  ================================================== -->
+
+  <meta property="og:type" content="website">
+
+  <meta
+    property="og:locale"
+    content="de_CH"
+  >
+
+  <meta
+    property="og:site_name"
+    content="Säntis Webdesign"
+  >
+
+  <meta
+    property="og:url"
+    content="https://saentiswebdesign.ch/"
+  >
+
+  <meta
+    property="og:title"
+    content="Webdesign St. Gallen für KMU | Säntis Webdesign"
+  >
+
+  <meta
+    property="og:description"
+    content="Individuelle, schnelle und professionelle Websites für KMU und Handwerksbetriebe in St. Gallen und der Ostschweiz."
+  >
+
+  <meta
+    property="og:image"
+    content="https://saentiswebdesign.ch/Bilder/saentis-social-preview.png"
+  >
+
+  <meta
+    property="og:image:secure_url"
+    content="https://saentiswebdesign.ch/Bilder/saentis-social-preview.png"
+  >
+
+  <meta
+    property="og:image:alt"
+    content="Säntis Webdesign – Webdesign für KMU in St. Gallen und der Ostschweiz"
+  >
+
+
+  <!-- ==================================================
+       SOCIAL PREVIEW / X
+  ================================================== -->
+
+  <meta
+    name="twitter:card"
+    content="summary_large_image"
+  >
+
+  <meta
+    name="twitter:title"
+    content="Webdesign St. Gallen für KMU | Säntis Webdesign"
+  >
+
+  <meta
+    name="twitter:description"
+    content="Individuelle, schnelle und professionelle Websites für KMU und Handwerksbetriebe in St. Gallen und der Ostschweiz."
+  >
+
+  <meta
+    name="twitter:image"
+    content="https://saentiswebdesign.ch/Bilder/saentis-social-preview.png"
+  >
+
+  <meta
+    name="twitter:image:alt"
+    content="Säntis Webdesign – Webdesign für KMU in St. Gallen und der Ostschweiz"
+  >
+
+
+  <!-- ==================================================
+       STRUKTURIERTE DATEN
+  ================================================== -->
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "@id": "https://saentiswebdesign.ch/#business",
+    "name": "Säntis Webdesign",
+    "url": "https://saentiswebdesign.ch/",
+    "email": "info@saentiswebdesign.ch",
+    "description": "Individuelles Webdesign für KMU und Handwerksbetriebe in St. Gallen und der Ostschweiz.",
+    "founder": {
+      "@type": "Person",
+      "name": "Mato Matkovic"
+    },
+    "areaServed": [
+      {
+        "@type": "City",
+        "name": "St. Gallen"
+      },
+      {
+        "@type": "AdministrativeArea",
+        "name": "Ostschweiz"
+      },
+      {
+        "@type": "Country",
+        "name": "Schweiz"
+      }
+    ],
+    "serviceType": [
+      "Webdesign",
+      "Website-Entwicklung",
+      "Website-Redesign",
+      "Responsive Webdesign",
+      "Technische SEO"
+    ]
+  }
+  </script>
+
+
+  <!-- ==================================================
+       PERFORMANCE
+  ================================================== -->
+
+  <link
+    rel="preload"
+    href="/Bilder/logo-mark.png"
+    as="image"
+  >
+
+  <link
+    rel="stylesheet"
+    href="style.css?v=1.2"
+  >
+
 </head>
 
-<body data-version="1.1">
+
+<body data-version="1.2">
+
 
 <header class="header" id="header">
+
   <nav class="nav" aria-label="Hauptnavigation">
 
-    <a href="#start" class="logo" aria-label="Säntis Webdesign Startseite">
+    <a
+      href="#start"
+      class="logo"
+      aria-label="Säntis Webdesign Startseite"
+    >
+
       <img
         src="Bilder/logo-mark.png"
         alt="Säntis Webdesign"
         width="515"
         height="405"
+        loading="eager"
+        decoding="async"
+        fetchpriority="high"
       >
+
     </a>
+
 
     <button
       class="burger"
@@ -39,22 +219,50 @@
       <span></span>
     </button>
 
+
     <ul class="nav-links" id="nav-links">
-      <li><a href="#leistungen">Leistungen</a></li>
-      <li><a href="#referenzen">Referenz</a></li>
-      <li><a href="#ablauf">Ablauf</a></li>
-      <li><a href="#ueber-mich">Über mich</a></li>
+
+      <li>
+        <a href="#leistungen">
+          Leistungen
+        </a>
+      </li>
+
+      <li>
+        <a href="#referenzen">
+          Referenz
+        </a>
+      </li>
+
+      <li>
+        <a href="#ablauf">
+          Ablauf
+        </a>
+      </li>
+
+      <li>
+        <a href="#ueber-mich">
+          Über mich
+        </a>
+      </li>
+
     </ul>
 
 
-    <a href="#kontakt" class="nav-cta">
-    Projekt anfragen
+    <a
+      href="#kontakt"
+      class="nav-cta"
+    >
+      Projekt anfragen
     </a>
 
   </nav>
+
 </header>
 
+
 <main>
+
 
   <!-- ==================================================
        HERO
@@ -62,148 +270,272 @@
 
   <section class="hero" id="start">
 
-    <div class="hero-orb orb-a"></div>
-    <div class="hero-orb orb-b"></div>
+    <div
+      class="hero-orb orb-a"
+      aria-hidden="true"
+    ></div>
+
+    <div
+      class="hero-orb orb-b"
+      aria-hidden="true"
+    ></div>
+
 
     <div class="hero-inner">
+
 
       <div class="hero-copy reveal">
 
         <p class="kicker">
-          <span></span>
+
+          <span aria-hidden="true"></span>
+
           Webdesign aus der Ostschweiz
+
         </p>
+
 
         <h1>
           Ihr Unternehmen ist stark.
           <em>Ihre Website sollte es auch sein.</em>
         </h1>
 
+
         <p class="hero-lead">
           Individuelle Websites für Schweizer KMU und Handwerksbetriebe –
           klar gestaltet, technisch sauber und auf jedem Gerät überzeugend.
         </p>
 
+
         <div class="hero-actions">
 
-          <a href="#kontakt" class="btn btn-primary">
+          <a
+            href="#kontakt"
+            class="btn btn-primary"
+          >
             Projekt besprechen
           </a>
 
-          <a href="#referenzen" class="btn btn-ghost">
+
+          <a
+            href="#referenzen"
+            class="btn btn-ghost"
+          >
             Arbeit ansehen
           </a>
 
         </div>
 
+
         <div class="hero-proof">
-          <span>Individuell entwickelt</span>
-          <span>Responsive</span>
-          <span>Technische SEO</span>
+
+          <span>
+            Individuell entwickelt
+          </span>
+
+          <span>
+            Responsive
+          </span>
+
+          <span>
+            Technische SEO
+          </span>
+
         </div>
 
       </div>
+
 
       <div
         class="hero-stage reveal"
         aria-label="Website-Darstellung auf Desktop und Smartphone"
       >
 
-        <div class="stage-glow"></div>
+        <div
+          class="stage-glow"
+          aria-hidden="true"
+        ></div>
+
 
         <div class="desktop-frame">
 
           <div class="frame-bar">
+
             <i></i>
             <i></i>
             <i></i>
-            <span>saentiswebdesign.ch</span>
+
+            <span>
+              saentiswebdesign.ch
+            </span>
+
           </div>
+
 
           <div class="frame-page">
 
+
             <div class="demo-nav">
-              <b>SÄNTIS</b>
+
+              <b>
+                SÄNTIS
+              </b>
+
               <div>
                 <i></i>
                 <i></i>
                 <i></i>
               </div>
+
             </div>
+
 
             <div class="demo-hero">
 
-              <small>DIGITALER AUFTRITT</small>
+              <small>
+                DIGITALER AUFTRITT
+              </small>
+
 
               <strong>
                 Websites, die
-                <span>Wirkung zeigen.</span>
+                <span>
+                  Wirkung zeigen.
+                </span>
               </strong>
+
 
               <p>
                 Modern. Klar. Professionell.
               </p>
 
-              <button type="button">
+
+              <button
+                type="button"
+                tabindex="-1"
+                aria-hidden="true"
+              >
                 Projekt starten
               </button>
 
             </div>
 
+
             <div class="demo-row">
+
               <i></i>
               <i></i>
               <i></i>
+
             </div>
 
           </div>
 
         </div>
 
+
         <div class="phone-frame">
 
           <div class="phone-notch"></div>
+
 
           <div class="phone-brand">
             SÄNTIS
           </div>
 
+
           <div class="phone-copy">
-            <small>WEBDESIGN</small>
+
+            <small>
+              WEBDESIGN
+            </small>
+
             <b>
               Digital.
-              <span>Stark.</span>
+              <span>
+                Stark.
+              </span>
             </b>
+
             <i></i>
             <i></i>
+
           </div>
 
         </div>
 
-        <div class="stage-annotations" aria-hidden="true">
 
-          <div class="stage-annotation annotation-responsive">
-            <span class="annotation-index">01</span>
-            <span class="annotation-copy">
-              <b>Responsive</b>
-              <small>Desktop · Tablet · Mobile</small>
+        <div
+          class="stage-annotations"
+          aria-hidden="true"
+        >
+
+          <div
+            class="stage-annotation annotation-responsive"
+          >
+
+            <span class="annotation-index">
+              01
             </span>
+
+            <span class="annotation-copy">
+
+              <b>
+                Responsive
+              </b>
+
+              <small>
+                Desktop · Tablet · Mobile
+              </small>
+
+            </span>
+
           </div>
 
-          <div class="stage-annotation annotation-performance">
-            <span class="annotation-index">02</span>
-            <span class="annotation-copy">
-              <b>Performance</b>
-              <small>Schnell & sauber entwickelt</small>
+
+          <div
+            class="stage-annotation annotation-performance"
+          >
+
+            <span class="annotation-index">
+              02
             </span>
+
+            <span class="annotation-copy">
+
+              <b>
+                Performance
+              </b>
+
+              <small>
+                Schnell &amp; sauber entwickelt
+              </small>
+
+            </span>
+
           </div>
 
-          <div class="stage-annotation annotation-individual">
-            <span class="annotation-index">03</span>
-            <span class="annotation-copy">
-              <b>Individuell</b>
-              <small>Keine austauschbaren Templates</small>
+
+          <div
+            class="stage-annotation annotation-individual"
+          >
+
+            <span class="annotation-index">
+              03
             </span>
+
+            <span class="annotation-copy">
+
+              <b>
+                Individuell
+              </b>
+
+              <small>
+                Keine austauschbaren Templates
+              </small>
+
+            </span>
+
           </div>
 
         </div>
@@ -212,58 +544,99 @@
 
     </div>
 
+
     <a
       class="scroll-cue"
       href="#positionierung"
-      aria-label="Weiter scrollen"
+      aria-label="Weiter zu Positionierung"
     >
-      <span></span>
+
+      <span aria-hidden="true"></span>
+
       ENTDECKEN
+
     </a>
 
   </section>
+
 
   <!-- ==================================================
        POSITIONIERUNG
   ================================================== -->
 
-  <section class="positioning" id="positionierung">
+  <section
+    class="positioning"
+    id="positionierung"
+  >
 
-    <div class="positioning-inner reveal container">
+    <div
+      class="positioning-inner reveal container"
+    >
 
       <p class="section-index">
         01 / POSITIONIERUNG
       </p>
 
+
       <h2 class="title title-positioning">
+
         Eine Website ist nicht einfach eine Seite im Internet.
-        <span>Sie ist der erste Eindruck Ihres Unternehmens.</span>
+
+        <span>
+          Sie ist der erste Eindruck Ihres Unternehmens.
+        </span>
+
       </h2>
+
 
       <div class="positioning-points">
 
+
         <article class="positioning-point">
-          <span>01</span>
+
+          <span aria-hidden="true">
+            01
+          </span>
+
+
           <div>
-            <h3>Vertrauen entsteht vor dem ersten Gespräch.</h3>
+
+            <h3>
+              Vertrauen entsteht vor dem ersten Gespräch.
+            </h3>
+
             <p>
               Bevor jemand anruft, eine Offerte verlangt oder Ihr Geschäft
               besucht, sieht er häufig zuerst Ihre Website. Genau dort muss
               Kompetenz sichtbar werden.
             </p>
+
           </div>
+
         </article>
 
+
         <article class="positioning-point">
-          <span>02</span>
+
+          <span aria-hidden="true">
+            02
+          </span>
+
+
           <div>
-            <h3>Klarheit führt Besucher zur richtigen Entscheidung.</h3>
+
+            <h3>
+              Klarheit führt Besucher zur richtigen Entscheidung.
+            </h3>
+
             <p>
               Leistungen, Nutzen und Kontaktwege werden so strukturiert, dass
               Interessenten schnell verstehen, was Ihr Unternehmen anbietet
               und wie sie den nächsten Schritt machen können.
             </p>
+
           </div>
+
         </article>
 
       </div>
@@ -272,11 +645,15 @@
 
   </section>
 
+
   <!-- ==================================================
        LEISTUNGEN
   ================================================== -->
 
-  <section class="services section" id="leistungen">
+  <section
+    class="services section"
+    id="leistungen"
+  >
 
     <div class="section-top reveal container">
 
@@ -284,10 +661,17 @@
         02 / LEISTUNGEN
       </p>
 
+
       <h2 class="title title-section">
+
         Alles, was ein starker
-        <span>Webauftritt braucht.</span>
+
+        <span>
+          Webauftritt braucht.
+        </span>
+
       </h2>
+
 
       <p class="section-lead">
         Design, Technik und Nutzerführung aus einem Guss –
@@ -296,18 +680,29 @@
 
     </div>
 
+
     <div class="service-showcase container">
+
 
       <article class="service-main reveal">
 
         <div class="service-meta">
-          <span>01</span>
-          <span>DESIGN & ENTWICKLUNG</span>
+
+          <span>
+            01
+          </span>
+
+          <span>
+            DESIGN &amp; ENTWICKLUNG
+          </span>
+
         </div>
+
 
         <h3>
           Webdesign, das nicht nach Vorlage aussieht.
         </h3>
+
 
         <p>
           Individuelle Gestaltung mit klarer visueller Hierarchie,
@@ -315,11 +710,23 @@
           gezielt durch Ihre Leistungen führt.
         </p>
 
+
         <div class="service-tags">
-          <span>Individuelles Design</span>
-          <span>HTML / CSS / JavaScript</span>
-          <span>Erweiterbar</span>
+
+          <span>
+            Individuelles Design
+          </span>
+
+          <span>
+            HTML / CSS / JavaScript
+          </span>
+
+          <span>
+            Erweiterbar
+          </span>
+
         </div>
+
 
         <div
           class="service-device-preview"
@@ -333,10 +740,12 @@
             <i></i>
           </div>
 
+
           <div class="preview-tablet">
             <span></span>
             <i></i>
           </div>
+
 
           <div class="preview-phone">
             <span></span>
@@ -348,22 +757,32 @@
 
       </article>
 
+
       <div class="service-side">
+
 
         <article class="service-panel reveal">
 
-          <span>02</span>
+          <span aria-hidden="true">
+            02
+          </span>
+
 
           <h3>
-            Responsive & Performance
+            Responsive &amp; Performance
           </h3>
+
 
           <p>
             Ein konsistenter Auftritt auf Desktop, Tablet und Smartphone –
             schnell, stabil und sauber aufgebaut.
           </p>
 
-          <div class="device-lines" aria-hidden="true">
+
+          <div
+            class="device-lines"
+            aria-hidden="true"
+          >
             <i></i>
             <i></i>
             <i></i>
@@ -371,20 +790,31 @@
 
         </article>
 
-        <article class="service-panel service-panel-dark reveal">
 
-          <span>03</span>
+        <article
+          class="service-panel service-panel-dark reveal"
+        >
+
+          <span aria-hidden="true">
+            03
+          </span>
+
 
           <h3>
-            Technische SEO & Conversion
+            Technische SEO &amp; Conversion
           </h3>
+
 
           <p>
             Saubere technische Grundlagen für Suchmaschinen und klare
             Kontaktwege, damit Interessenten ohne Umwege zur Anfrage gelangen.
           </p>
 
-          <div class="signal" aria-hidden="true">
+
+          <div
+            class="signal"
+            aria-hidden="true"
+          >
             <i></i>
             <i></i>
             <i></i>
@@ -397,25 +827,47 @@
 
     </div>
 
+
     <div class="service-strip reveal container">
-      <span>Website-Redesign</span>
-      <i></i>
-      <span>Kontaktformulare</span>
-      <i></i>
-      <span>Domain & Veröffentlichung</span>
-      <i></i>
-      <span>Technische Optimierung</span>
+
+      <span>
+        Website-Redesign
+      </span>
+
+      <i aria-hidden="true"></i>
+
+      <span>
+        Kontaktformulare
+      </span>
+
+      <i aria-hidden="true"></i>
+
+      <span>
+        Domain &amp; Veröffentlichung
+      </span>
+
+      <i aria-hidden="true"></i>
+
+      <span>
+        Technische Optimierung
+      </span>
+
     </div>
 
   </section>
+
 
   <!-- ==================================================
        CASE STUDY
   ================================================== -->
 
-  <section class="case" id="referenzen">
+  <section
+    class="case"
+    id="referenzen"
+  >
 
     <div class="case-inner container">
+
 
       <div class="case-copy reveal">
 
@@ -423,10 +875,17 @@
           03 / AUSGEWÄHLTES PROJEKT
         </p>
 
+
         <h2 class="title title-display">
+
           Vom Handwerk zum
-          <span>digitalen Auftritt.</span>
+
+          <span>
+            digitalen Auftritt.
+          </span>
+
         </h2>
+
 
         <p class="case-intro">
           Für SavaWood Switzerland entstand ein vollständiger Webauftritt,
@@ -434,60 +893,87 @@
           Interessenten strukturiert bis zur Anfrage führt.
         </p>
 
+
         <div class="case-story">
 
+
           <article>
-            <span>AUSGANGSLAGE</span>
+
+            <span>
+              AUSGANGSLAGE
+            </span>
+
             <p>
               Hochwertige handgefertigte Produkte brauchten einen digitalen
               Auftritt, der Qualität, Individualität und Vertrauen sichtbar macht.
             </p>
+
           </article>
 
+
           <article>
-            <span>LÖSUNG</span>
+
+            <span>
+              LÖSUNG
+            </span>
+
             <p>
               Individuelles Design, responsive Umsetzung, Produktkonfigurator
               und ein klarer Anfrageprozess wurden zu einer Website verbunden.
             </p>
+
           </article>
 
+
           <article>
-            <span>ERGEBNIS</span>
+
+            <span>
+              ERGEBNIS
+            </span>
+
             <p>
               Interessenten können Produkte entdecken, konfigurieren und direkt
               eine unverbindliche Anfrage senden – auf jedem Gerät.
             </p>
+
           </article>
 
         </div>
+
 
         <div class="case-scope">
           Konzeption · Design · Entwicklung · Veröffentlichung
         </div>
 
         <a
-          href="https://savawood.ch"
-          class="case-link"
-          target="_blank"
-          rel="noopener"
+        href="https://savawood.ch/"
+        class="case-link"
+        target="_blank"
+        rel="noopener noreferrer"
         >
-          Projekt live ansehen
-          <span>↗</span>
+        Projekt live ansehen
         </a>
 
       </div>
 
+
       <div class="case-visual reveal">
+
 
         <div class="case-browser">
 
           <div class="case-bar">
+
             <i></i>
             <i></i>
             <i></i>
-            <span>savawood.ch</span>
+
+            <span>
+              savawood.ch
+            </span>
+
           </div>
+
 
           <img
             src="./savawood-reference.jpg"
@@ -500,9 +986,17 @@
 
         </div>
 
-        <div class="case-phone" aria-label="Mobile Darstellung des Projekts">
+
+        <div
+          class="case-phone"
+          aria-label="Mobile Darstellung des Projekts SavaWood Switzerland"
+        >
+
           <div class="case-phone-notch"></div>
+
+
           <div class="case-phone-screen">
+
             <img
               src="./Bilder/savawood-mobile.png"
               alt="Mobile Ansicht der SavaWood Switzerland Website"
@@ -511,13 +1005,26 @@
               width="830"
               height="1446"
             >
+
           </div>
+
         </div>
 
+
         <div class="case-label">
-          <span>RESPONSIVE LIVE PROJECT</span>
-          <b>SavaWood Switzerland</b>
-          <small>Desktop · Mobile</small>
+
+          <span>
+            RESPONSIVE LIVE PROJECT
+          </span>
+
+          <b>
+            SavaWood Switzerland
+          </b>
+
+          <small>
+            Desktop · Mobile
+          </small>
+
         </div>
 
       </div>
@@ -526,11 +1033,15 @@
 
   </section>
 
+
   <!-- ==================================================
        ZUSAMMENARBEIT
   ================================================== -->
 
-  <section class="process section" id="ablauf">
+  <section
+    class="process section"
+    id="ablauf"
+  >
 
     <div class="process-head reveal container">
 
@@ -538,11 +1049,18 @@
         04 / ZUSAMMENARBEIT
       </p>
 
+
       <h2 class="title title-section">
+
         Von der ersten Idee
         bis zum
-        <span>Livegang.</span>
+
+        <span>
+          Livegang.
+        </span>
+
       </h2>
+
 
       <p class="section-lead">
         Ein klarer Ablauf. Direkte Kommunikation.
@@ -551,95 +1069,215 @@
 
     </div>
 
-    <div class="process-list container" aria-label="Projektablauf">
 
-      <div class="process-line" aria-hidden="true">
+    <div
+      class="process-list container"
+      aria-label="Projektablauf"
+    >
+
+      <div
+        class="process-line"
+        aria-hidden="true"
+      >
         <span></span>
       </div>
 
-      <article class="process-item" data-process-step="1">
-        <div class="process-node" aria-hidden="true">
-          <span>01</span>
-          <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+
+      <article
+        class="process-item"
+        data-process-step="1"
+      >
+
+        <div
+          class="process-node"
+          aria-hidden="true"
+        >
+
+          <span>
+            01
+          </span>
+
+          <svg
+            viewBox="0 0 24 24"
+            focusable="false"
+            aria-hidden="true"
+          >
             <path d="M7 11.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm10-1a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM2.5 19c0-3 2-5 4.5-5s4.5 2 4.5 5M13 19c.2-2.5 1.8-4.2 4-4.2 2.3 0 4 1.8 4.2 4.2"/>
           </svg>
+
         </div>
 
+
         <div class="process-copy">
-          <span class="process-eyebrow">Schritt 01</span>
-          <h3>Kennenlernen</h3>
+
+          <span class="process-eyebrow">
+            Schritt 01
+          </span>
+
+          <h3>
+            Kennenlernen
+          </h3>
+
           <p>
             Wir klären Unternehmen, Ziele, Inhalte und was Ihre neue Website
             erreichen soll.
           </p>
+
         </div>
+
       </article>
 
-      <article class="process-item" data-process-step="2">
-        <div class="process-node" aria-hidden="true">
-          <span>02</span>
-          <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+
+      <article
+        class="process-item"
+        data-process-step="2"
+      >
+
+        <div
+          class="process-node"
+          aria-hidden="true"
+        >
+
+          <span>
+            02
+          </span>
+
+          <svg
+            viewBox="0 0 24 24"
+            focusable="false"
+            aria-hidden="true"
+          >
             <path d="M4 19h16M6 16l8.8-8.8 2 2L8 18H6v-2Zm9.8-9.8 1.4-1.4a1.4 1.4 0 0 1 2 0l.8.8a1.4 1.4 0 0 1 0 2L18.6 9"/>
           </svg>
+
         </div>
 
+
         <div class="process-copy">
-          <span class="process-eyebrow">Schritt 02</span>
-          <h3>Konzept &amp; Design</h3>
+
+          <span class="process-eyebrow">
+            Schritt 02
+          </span>
+
+          <h3>
+            Konzept &amp; Design
+          </h3>
+
           <p>
             Struktur, visuelle Richtung und Benutzerführung werden passend zu
             Ihrem Auftritt entwickelt.
           </p>
+
         </div>
+
       </article>
 
-      <article class="process-item" data-process-step="3">
-        <div class="process-node" aria-hidden="true">
-          <span>03</span>
-          <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+
+      <article
+        class="process-item"
+        data-process-step="3"
+      >
+
+        <div
+          class="process-node"
+          aria-hidden="true"
+        >
+
+          <span>
+            03
+          </span>
+
+          <svg
+            viewBox="0 0 24 24"
+            focusable="false"
+            aria-hidden="true"
+          >
             <path d="m8.5 7-5 5 5 5M15.5 7l5 5-5 5M13.5 4 10.5 20"/>
           </svg>
+
         </div>
 
+
         <div class="process-copy">
-          <span class="process-eyebrow">Schritt 03</span>
-          <h3>Entwicklung</h3>
+
+          <span class="process-eyebrow">
+            Schritt 03
+          </span>
+
+          <h3>
+            Entwicklung
+          </h3>
+
           <p>
             Das Design wird responsiv, performant und technisch sauber für alle
             Geräte umgesetzt.
           </p>
+
         </div>
+
       </article>
 
-      <article class="process-item" data-process-step="4">
-        <div class="process-node" aria-hidden="true">
-          <span>04</span>
-          <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+
+      <article
+        class="process-item"
+        data-process-step="4"
+      >
+
+        <div
+          class="process-node"
+          aria-hidden="true"
+        >
+
+          <span>
+            04
+          </span>
+
+          <svg
+            viewBox="0 0 24 24"
+            focusable="false"
+            aria-hidden="true"
+          >
             <path d="m5 12.5 4.2 4.2L19 7M12 2.8a9.2 9.2 0 1 1 0 18.4 9.2 9.2 0 0 1 0-18.4Z"/>
           </svg>
+
         </div>
 
+
         <div class="process-copy">
-          <span class="process-eyebrow">Schritt 04</span>
-          <h3>Livegang</h3>
+
+          <span class="process-eyebrow">
+            Schritt 04
+          </span>
+
+          <h3>
+            Go Live
+          </h3>
+
           <p>
-            Nach Tests und Feinschliff wird die Website veröffentlicht und für
-            den Einsatz vorbereitet.
+            Nach Tests und Feinschliff geht Ihre Website online und ist bereit
+            für Besucher, Suchmaschinen und neue Anfragen.
           </p>
+
         </div>
+
       </article>
 
     </div>
 
   </section>
 
+
   <!-- ==================================================
        ÜBER MICH
   ================================================== -->
 
-  <section class="about" id="ueber-mich">
+  <section
+    class="about"
+    id="ueber-mich"
+  >
 
     <div class="about-inner container">
+
 
       <div class="about-signature reveal">
 
@@ -647,36 +1285,66 @@
           05 / PERSÖNLICH
         </p>
 
+
         <div class="about-logo-wrap">
+
           <img
             src="Bilder/saentis-logo-transparent.png"
             alt="Säntis Webdesign"
             width="1254"
             height="1254"
             loading="lazy"
+            decoding="async"
           >
+
         </div>
+
 
         <div class="about-person">
-          <span class="about-person-kicker">DIREKTER ANSPRECHPARTNER</span>
-          <strong>Mato Matkovic</strong>
-          <small>Webdesign · Technik · Umsetzung</small>
+
+          <span class="about-person-kicker">
+            DIREKTER ANSPRECHPARTNER
+          </span>
+
+          <strong>
+            Mato Matkovic
+          </strong>
+
+          <small>
+            Webdesign · Technik · Umsetzung
+          </small>
+
         </div>
 
+
         <div class="about-location">
-          <span>ST. GALLEN</span>
-          <span>SCHWEIZ</span>
+
+          <span>
+            ST. GALLEN
+          </span>
+
+          <span>
+            SCHWEIZ
+          </span>
+
         </div>
 
       </div>
 
+
       <div class="about-copy reveal">
 
         <h2 class="title title-display">
+
           Kein Ticketsystem.
           Kein Weiterreichen.
-          <span>Ein Ansprechpartner.</span>
+
+          <span>
+            Ein Ansprechpartner.
+          </span>
+
         </h2>
+
 
         <p>
           Mein Name ist Mato Matkovic. Ich entwickle Websites für Schweizer
@@ -685,18 +1353,34 @@
           Umsetzung.
         </p>
 
+
         <p>
           Sie sprechen vom ersten Gespräch bis zur Veröffentlichung direkt mit
           der Person, die Ihre Website entwickelt.
         </p>
 
+
         <div class="about-values">
-          <span>Direkte Kommunikation</span>
-          <span>Klare Entscheidungen</span>
-          <span>Saubere Umsetzung</span>
+
+          <span>
+            Direkte Kommunikation
+          </span>
+
+          <span>
+            Klare Entscheidungen
+          </span>
+
+          <span>
+            Saubere Umsetzung
+          </span>
+
         </div>
 
-        <a href="#kontakt" class="case-link">
+
+        <a
+          href="#kontakt"
+          class="case-link"
+        >
           Projekt mit mir besprechen
         </a>
 
@@ -706,11 +1390,15 @@
 
   </section>
 
+
   <!-- ==================================================
        KONTAKT
   ================================================== -->
 
-  <section class="contact" id="kontakt">
+  <section
+    class="contact"
+    id="kontakt"
+  >
 
     <div class="contact-inner reveal container">
 
@@ -718,18 +1406,27 @@
         06 / IHR PROJEKT
       </p>
 
+
       <h2 class="title title-display title-contact">
+
         Ihre nächste Website
         kann
-        <span>hier beginnen.</span>
+
+        <span>
+          hier beginnen.
+        </span>
+
       </h2>
+
 
       <p>
         Erzählen Sie mir kurz von Ihrem Unternehmen und Ihrem gewünschten
         Webauftritt. Die erste Kontaktaufnahme ist unverbindlich.
       </p>
 
+
       <div class="contact-layout">
+
 
         <div class="contact-action">
 
@@ -737,46 +1434,108 @@
             href="mailto:info@saentiswebdesign.ch?subject=Projektanfrage%20S%C3%A4ntis%20Webdesign"
             class="contact-main"
           >
+
             <span>
-              <small>UNVERBINDLICH</small>
+
+              <small>
+                UNVERBINDLICH
+              </small>
+
               Projekt besprechen
+
             </span>
-            <b class="contact-arrow" aria-hidden="true"></b>
+
+            <b
+              class="contact-arrow"
+              aria-hidden="true"
+            ></b>
+
           </a>
 
+
           <p class="contact-email">
+
             Oder direkt per E-Mail
-            <a href="mailto:info@saentiswebdesign.ch">info@saentiswebdesign.ch</a>
+
+            <a href="mailto:info@saentiswebdesign.ch">
+              info@saentiswebdesign.ch
+            </a>
+
           </p>
 
         </div>
 
-        <aside class="contact-trust" aria-label="Vorteile der Zusammenarbeit">
 
-          <span class="contact-trust-label">ZUSAMMENARBEIT</span>
+        <aside
+          class="contact-trust"
+          aria-label="Vorteile der Zusammenarbeit"
+        >
+
+          <span class="contact-trust-label">
+            ZUSAMMENARBEIT
+          </span>
+
 
           <div class="contact-trust-item">
-            <b>01</b>
+
+            <b aria-hidden="true">
+              01
+            </b>
+
             <span>
-              <strong>Direkter Ansprechpartner</strong>
-              <small>Vom ersten Gespräch bis zum Livegang.</small>
+
+              <strong>
+                Direkter Ansprechpartner
+              </strong>
+
+              <small>
+                Vom ersten Gespräch bis zum Livegang.
+              </small>
+
             </span>
+
           </div>
 
-          <div class="contact-trust-item">
-            <b>02</b>
-            <span>
-              <strong>Unverbindlicher Erstkontakt</strong>
-              <small>Projekt, Ziele und Möglichkeiten zuerst klären.</small>
-            </span>
-          </div>
 
           <div class="contact-trust-item">
-            <b>03</b>
+
+            <b aria-hidden="true">
+              02
+            </b>
+
             <span>
-              <strong>Klare Kommunikation</strong>
-              <small>Keine Tickets, keine unnötigen Agenturwege.</small>
+
+              <strong>
+                Unverbindlicher Erstkontakt
+              </strong>
+
+              <small>
+                Projekt, Ziele und Möglichkeiten zuerst klären.
+              </small>
+
             </span>
+
+          </div>
+
+
+          <div class="contact-trust-item">
+
+            <b aria-hidden="true">
+              03
+            </b>
+
+            <span>
+
+              <strong>
+                Klare Kommunikation
+              </strong>
+
+              <small>
+                Keine Tickets, keine unnötigen Agenturwege.
+              </small>
+
+            </span>
+
           </div>
 
         </aside>
@@ -787,7 +1546,9 @@
 
   </section>
 
+
 </main>
+
 
 <!-- ==================================================
      FOOTER
@@ -797,22 +1558,31 @@
 
   <div class="footer-inner container">
 
+
     <div class="footer-brand-block">
 
-      <a href="#start" class="footer-brand">
+      <a
+        href="#start"
+        class="footer-brand"
+        aria-label="Zurück zum Seitenanfang"
+      >
 
         <img
           src="Bilder/saentis-logo-transparent.png"
           alt="Säntis Webdesign"
           width="1254"
           height="1254"
+          loading="lazy"
+          decoding="async"
         >
 
       </a>
 
+
       <p>
         Webdesign für Schweizer KMU und Handwerksbetriebe.
       </p>
+
 
       <span>
         St. Gallen · Ostschweiz
@@ -820,28 +1590,57 @@
 
     </div>
 
-    <nav class="footer-column" aria-label="Footer Navigation">
 
-      <strong>Navigation</strong>
+    <nav
+      class="footer-column"
+      aria-label="Footer Navigation"
+    >
 
-      <a href="#leistungen">Leistungen</a>
-      <a href="#referenzen">Referenz</a>
-      <a href="#ablauf">Ablauf</a>
-      <a href="#ueber-mich">Über mich</a>
-      <a href="#kontakt">Kontakt</a>
+      <strong>
+        Navigation
+      </strong>
+
+      <a href="#leistungen">
+        Leistungen
+      </a>
+
+      <a href="#referenzen">
+        Referenz
+      </a>
+
+      <a href="#ablauf">
+        Ablauf
+      </a>
+
+      <a href="#ueber-mich">
+        Über mich
+      </a>
+
+      <a href="#kontakt">
+        Kontakt
+      </a>
 
     </nav>
 
+
     <div class="footer-column">
 
-      <strong>Rechtliches</strong>
+      <strong>
+        Rechtliches
+      </strong>
 
-      <a href="impressum.html">Impressum</a>
-      <a href="datenschutz.html">Datenschutz</a>
+      <a href="impressum.html">
+        Impressum
+      </a>
+
+      <a href="datenschutz.html">
+        Datenschutz
+      </a>
 
     </div>
 
   </div>
+
 
   <div class="footer-bottom container">
 
@@ -857,7 +1656,8 @@
 
 </footer>
 
-<script src="script.js?v=1.1"></script>
+
+<script src="script.js?v=1.2"></script>
 
 </body>
 </html>
