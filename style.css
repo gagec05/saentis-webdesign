@@ -2838,3 +2838,7 @@ footer {
         line-height: 1.75;
     }
 }
+
+.no-break {
+  white-space: nowrap;
+}
