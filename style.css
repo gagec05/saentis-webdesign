@@ -171,6 +171,15 @@ button { font: inherit; }
     transform: scaleX(1);
 }
 
+/* Aktiver Navigationspunkt beim Scrollen */
+.nav-links a.active {
+    color: #fff;
+}
+
+.nav-links a.active::after {
+    transform: scaleX(1);
+}
+
 .nav-cta {
     display: inline-flex;
     align-items: center;
@@ -1871,24 +1880,39 @@ footer {
 @media (max-width: 800px) {
 
     :root {
-        --section-x: 20px;
-        --section-y: 82px;
+        --section-x: clamp(1rem, 5vw, 1.5rem);
+        --section-y: clamp(4.5rem, 11vw, 6rem);
     }
 
     html {
-        scroll-padding-top: 74px;
+        scroll-padding-top: calc(4.5rem + 1rem);
     }
 
     .header,
     .header.scrolled {
-        height: 74px;
+        height: auto;
+        min-height: 4.5rem;
         background: rgba(7,17,31,.98);
         backdrop-filter: blur(16px);
     }
 
     .nav {
+        height: auto;
+        min-height: 4.5rem;
         gap: 16px;
         padding-inline: 18px;
+    }
+
+    .logo {
+        width: clamp(4rem, 18vw, 5rem);
+        height: auto;
+        aspect-ratio: 1 / 1;
+    }
+
+    .logo img {
+        width: min(85%, 4.25rem);
+        height: auto;
+        aspect-ratio: 1 / 1;
     }
 
     .nav-cta {
@@ -1914,7 +1938,7 @@ footer {
 
     .nav-links {
         position: fixed;
-        top: 82px;
+        top: calc(4.5rem + .5rem);
         left: 14px;
         right: 14px;
         display: grid;
@@ -2063,8 +2087,10 @@ footer {
     .title-display {
         max-width: 100%;
         margin-inline: auto;
-        font-size: clamp(36px,8.8vw,46px);
+        font-size: clamp(2.15rem, 8.5vw, 3rem);
+        line-height: 1.05;
         text-align: center;
+        text-wrap: balance;
     }
 
     .section-top,
@@ -2122,14 +2148,23 @@ footer {
         line-height: 1.65;
     }
 
+    .services {
+        position: relative;
+    }
+
+    .services .section-top {
+        padding-top: clamp(1rem, 4vw, 2rem);
+    }
+
     .service-main,
     .service-panel {
         text-align: center;
     }
 
     .service-main {
-        min-height: 500px;
-        padding: 26px;
+        min-height: auto;
+        padding: clamp(1.4rem, 5vw, 2rem);
+        padding-bottom: clamp(11rem, 48vw, 14rem);
     }
 
     .service-meta {
@@ -2156,9 +2191,10 @@ footer {
 
     .service-device-preview {
         right: 50%;
-        bottom: 14px;
-        width: 64%;
-        height: 165px;
+        bottom: 1rem;
+        width: min(72%, 22rem);
+        height: auto;
+        aspect-ratio: 1.65 / 1;
         transform: translateX(50%);
     }
 
@@ -2587,28 +2623,12 @@ footer {
         padding-inline: 16px;
     }
 
-    .title-section,
-    .title-positioning,
-    .title-display {
-        font-size: 34px;
-    }
-
     .positioning-point {
         padding: 20px 18px;
     }
 
-    .service-main {
-        min-height: 470px;
-        padding: 22px;
-    }
-
     .service-main h3 {
         font-size: 29px;
-    }
-
-    .service-device-preview {
-        width: 72%;
-        height: 142px;
     }
 
     .service-panel {
