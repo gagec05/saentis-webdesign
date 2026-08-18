@@ -1,5 +1,5 @@
 Säntis Webdesign
-Version 1.1
+Version 1.6
 
 Optimierungen:
 - Responsive Layout für Desktop, Tablet und Mobile bereinigt

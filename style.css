@@ -54,7 +54,7 @@ button { font: inherit; }
 .section-index,
 .kicker {
     margin: 0;
-    color: #65758c;
+    color: #7b8ba1;
     font-size: 12px;
     font-weight: 800;
     letter-spacing: .2em;
@@ -168,14 +168,6 @@ button { font: inherit; }
 }
 
 .nav-links a:is(:hover,:focus-visible)::after {
-    transform: scaleX(1);
-}
-
-.nav-links a.active {
-    color: #fff;
-}
-
-.nav-links a.active::after {
     transform: scaleX(1);
 }
 
@@ -1209,7 +1201,7 @@ button { font: inherit; }
     position: absolute;
     top: 8px;
     left: 10px;
-    color: #65758c;
+    color: #94a4b7;
     font-size: 9px;
     font-weight: 800;
 }
@@ -1231,7 +1223,7 @@ button { font: inherit; }
 .process-eyebrow {
     display: block;
     margin-bottom: 11px;
-    color: #65758c;
+    color: #8b9bae;
     font-size: 9px;
     font-weight: 800;
     letter-spacing: .16em;
@@ -1751,7 +1743,7 @@ footer {
 }
 
 .footer-brand-block > span {
-    color: #7388a2;
+    color: #5f7084;
     font-size: 11px;
     letter-spacing: .08em;
     text-transform: uppercase;
@@ -1788,7 +1780,7 @@ footer {
     margin-top: 55px;
     padding-top: 24px;
     border-top: 1px solid #172435;
-    color: #7388a2;
+    color: #5f7084;
     font-size: 11px;
 }
 
@@ -2837,8 +2829,4 @@ footer {
         font-size: 15px;
         line-height: 1.75;
     }
-}
-
-.no-break {
-  white-space: nowrap;
 }
