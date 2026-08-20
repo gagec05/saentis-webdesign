@@ -401,10 +401,29 @@ async function turnstilePruefen(
     }
 
     if (!antwort.ok) {
+        let fehlerErgebnis;
+
+        try {
+            fehlerErgebnis =
+                await antwort.clone().json();
+        } catch {
+            fehlerErgebnis = null;
+        }
+
         console.warn(
             "turnstile_http_error",
             {
-                status: antwort.status
+                status: antwort.status,
+                error_codes:
+                    Array.isArray(
+                        fehlerErgebnis?.[
+                            "error-codes"
+                        ]
+                    )
+                        ? fehlerErgebnis[
+                            "error-codes"
+                        ]
+                        : []
             }
         );
 
