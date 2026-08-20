@@ -391,42 +391,12 @@ async function turnstilePruefen(
                 }
             );
     } catch {
-        console.warn(
-            "turnstile_fetch_failed"
-        );
-
         return {
             dienstfehler: true
         };
     }
 
     if (!antwort.ok) {
-        let fehlerErgebnis;
-
-        try {
-            fehlerErgebnis =
-                await antwort.clone().json();
-        } catch {
-            fehlerErgebnis = null;
-        }
-
-        console.warn(
-            "turnstile_http_error",
-            {
-                status: antwort.status,
-                error_codes:
-                    Array.isArray(
-                        fehlerErgebnis?.[
-                            "error-codes"
-                        ]
-                    )
-                        ? fehlerErgebnis[
-                            "error-codes"
-                        ]
-                        : []
-            }
-        );
-
         return {
             dienstfehler: true
         };
@@ -438,36 +408,10 @@ async function turnstilePruefen(
         ergebnis =
             await antwort.json();
     } catch {
-        console.warn(
-            "turnstile_invalid_json"
-        );
-
         return {
             dienstfehler: true
         };
     }
-
-    console.info(
-        "turnstile_result",
-        {
-            success:
-                ergebnis.success === true,
-            error_codes:
-                Array.isArray(
-                    ergebnis["error-codes"]
-                )
-                    ? ergebnis["error-codes"]
-                    : [],
-            action_match:
-                ergebnis.action ===
-                TURNSTILE_ACTION,
-            hostname_match:
-                istErlaubterTurnstileHostname(
-                    ergebnis.hostname,
-                    context.request
-                )
-        }
-    );
 
     return {
         bestaetigt:
