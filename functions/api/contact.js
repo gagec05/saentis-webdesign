@@ -504,16 +504,6 @@ function projektanfrageValidieren(
     }
 
     if (
-        !message ||
-        message.length < 10
-    ) {
-        return {
-            fehler:
-                "Bitte schreiben Sie eine Nachricht mit mindestens 10 Zeichen."
-        };
-    }
-
-    if (
         company === null ||
         phone === null ||
         website === null ||
@@ -586,7 +576,7 @@ function emailTextErstellen(
         `Gewünschte Umsetzung: ${PROJEKTARTEN[werte.projectType]}`,
         "",
         "Nachricht:",
-        werte.message
+        werte.message || "Nicht angegeben"
     ].join("\n");
 }
 
