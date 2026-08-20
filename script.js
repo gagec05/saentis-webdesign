@@ -11,23 +11,93 @@ const burger =
 const nav =
     document.getElementById("nav-links");
 
+const navigationBreakpoint = 960;
+
 const revealElemente =
     document.querySelectorAll(".reveal");
 
 const processListe =
     document.querySelector(".process-list");
 
+const processSchritte =
+    processListe
+        ? Array.from(
+            processListe.querySelectorAll(
+                ".process-item"
+            )
+        )
+        : [];
+
+const processKnoten =
+    processSchritte
+        .map(
+            function (schritt) {
+                return schritt.querySelector(
+                    ".process-node"
+                );
+            }
+        )
+        .filter(Boolean);
+
+const processHoverAbfrage =
+    typeof window.matchMedia === "function"
+        ? window.matchMedia(
+            "(hover: hover) and (pointer: fine)"
+        )
+        : null;
+
+const processTouchLayoutAbfrage =
+    typeof window.matchMedia === "function"
+        ? window.matchMedia(
+            "(max-width: 1100px)"
+        )
+        : null;
+
 const navLinks =
     document.querySelectorAll(
-        ".nav-links a[href^='#']"
+        ".nav-links a[href^='#']:not(.nav-cta)"
     );
 
 const navBereiche = [
-    document.getElementById("leistungen"),
+    document.getElementById("angebot"),
+    document.getElementById("webdesign-st-gallen"),
     document.getElementById("referenzen"),
     document.getElementById("ablauf"),
     document.getElementById("ueber-mich")
 ].filter(Boolean);
+
+const kontaktBereich =
+    document.getElementById("kontakt");
+
+
+/* Formular */
+
+const projektFormular =
+    document.getElementById("project-form");
+
+const formularStatus =
+    document.getElementById("form-status");
+
+const formularButton =
+    projektFormular
+        ? projektFormular.querySelector(
+            'button[type="submit"]'
+        )
+        : null;
+
+const turnstileContainer =
+    document.getElementById(
+        "turnstile-widget"
+    );
+
+let formularWirdGesendet =
+    false;
+
+let turnstileWidgetId =
+    null;
+
+let turnstileAnfrage =
+    null;
 
 
 /* ==================================================
@@ -40,19 +110,27 @@ function headerAktualisieren() {
         return;
     }
 
+    const istKompakt =
+        window.scrollY > 24;
+
+    if (
+        headerIstKompakt ===
+        istKompakt
+    ) {
+        return;
+    }
+
     header.classList.toggle(
         "scrolled",
-        window.scrollY > 24
+        istKompakt
     );
+
+    headerIstKompakt =
+        istKompakt;
 }
 
-window.addEventListener(
-    "scroll",
-    headerAktualisieren,
-    { passive: true }
-);
-
-headerAktualisieren();
+let headerIstKompakt =
+    null;
 
 
 /* ==================================================
@@ -76,7 +154,13 @@ function navigationSchliessen() {
         "aria-expanded",
         "false"
     );
+
+    burger.setAttribute(
+        "aria-label",
+        "Menü öffnen"
+    );
 }
+
 
 if (
     burger &&
@@ -96,8 +180,16 @@ if (
                 "aria-expanded",
                 String(istOffen)
             );
+
+            burger.setAttribute(
+                "aria-label",
+                istOffen
+                    ? "Menü schließen"
+                    : "Menü öffnen"
+            );
         }
     );
+
 
     nav
         .querySelectorAll("a")
@@ -111,18 +203,20 @@ if (
             }
         );
 
+
     window.addEventListener(
         "resize",
         function () {
 
             if (
                 window.innerWidth >
-                800
+                navigationBreakpoint
             ) {
                 navigationSchliessen();
             }
         }
     );
+
 
     document.addEventListener(
         "keydown",
@@ -176,6 +270,7 @@ if (
             }
         );
 
+
     revealElemente.forEach(
         function (element) {
 
@@ -202,35 +297,65 @@ if (
    5. PROZESS-FORTSCHRITT BEIM SCROLLEN
 ================================================== */
 
-let processAnimationFrame =
+let seitenAnimationFrame =
     null;
+
+let letzterProcessFortschritt =
+    null;
+
+let letzterAktiverProcessSchritt =
+    null;
+
 
 function processFortschrittAktualisieren() {
 
-    processAnimationFrame =
-        null;
-
-    if (!processListe) {
+    if (
+        !processListe ||
+        processKnoten.length === 0
+    ) {
         return;
     }
-
-    const rect =
-        processListe.getBoundingClientRect();
 
     const viewportHoehe =
         window.innerHeight ||
         document.documentElement.clientHeight;
 
-    const start =
-        viewportHoehe * 0.74;
+    const ersterKnotenRect =
+        processKnoten[0]
+            .getBoundingClientRect();
 
-    const ende =
-        viewportHoehe * 0.28;
+    const letzterKnotenRect =
+        processKnoten[
+            processKnoten.length - 1
+        ].getBoundingClientRect();
 
-    const strecke =
+    const ersterKnotenMitte =
+        ersterKnotenRect.top +
+        ersterKnotenRect.height / 2;
+
+    const letzterKnotenMitte =
+        letzterKnotenRect.top +
+        letzterKnotenRect.height / 2;
+
+    const triggerStart =
+        viewportHoehe * 0.90;
+
+    const triggerEnde =
+        viewportHoehe * 0.40;
+
+    const knotenAbstand =
+        Math.max(
+            0,
+            letzterKnotenMitte -
+            ersterKnotenMitte
+        );
+
+    const fortschrittStrecke =
         Math.max(
             1,
-            rect.height + start - ende
+            knotenAbstand +
+            triggerStart -
+            triggerEnde
         );
 
     const fortschritt =
@@ -238,56 +363,128 @@ function processFortschrittAktualisieren() {
             1,
             Math.max(
                 0,
-                (start - rect.top) /
-                strecke
+                (triggerStart -
+                    ersterKnotenMitte) /
+                fortschrittStrecke
             )
         );
 
-    processListe.style.setProperty(
-        "--process-progress",
-        fortschritt.toFixed(3)
-    );
-}
-
-function processScrollAnfordern() {
+    const processFortschritt =
+        fortschritt.toFixed(3);
 
     if (
-        processAnimationFrame !==
-        null
+        processFortschritt !==
+        letzterProcessFortschritt
+    ) {
+        processListe.style.setProperty(
+            "--process-progress",
+            processFortschritt
+        );
+
+        letzterProcessFortschritt =
+            processFortschritt;
+    }
+
+    const verwendetTouchLayout =
+        processTouchLayoutAbfrage
+            ? processTouchLayoutAbfrage.matches
+            : window.innerWidth <= 1100;
+
+    const kannHover =
+        !verwendetTouchLayout &&
+        processHoverAbfrage &&
+        processHoverAbfrage.matches;
+
+    const aktiverSchritt =
+        !kannHover &&
+        fortschritt > 0 &&
+        processSchritte.length > 0
+            ? Math.min(
+                processSchritte.length - 1,
+                Math.floor(
+                    fortschritt *
+                    processSchritte.length
+                )
+            )
+            : -1;
+
+    if (
+        aktiverSchritt ===
+        letzterAktiverProcessSchritt
     ) {
         return;
     }
 
-    processAnimationFrame =
-        window.requestAnimationFrame(
-            processFortschrittAktualisieren
-        );
+    processSchritte.forEach(
+        function (schritt, index) {
+
+            const istAktiv =
+                index === aktiverSchritt;
+
+            schritt.classList.toggle(
+                "is-active",
+                istAktiv
+            );
+
+            if (istAktiv) {
+                schritt.setAttribute(
+                    "aria-current",
+                    "step"
+                );
+            } else {
+                schritt.removeAttribute(
+                    "aria-current"
+                );
+            }
+        }
+    );
+
+    letzterAktiverProcessSchritt =
+        aktiverSchritt;
 }
 
-window.addEventListener(
-    "scroll",
-    processScrollAnfordern,
-    { passive: true }
-);
-
-window.addEventListener(
-    "resize",
-    processScrollAnfordern
-);
-
-processFortschrittAktualisieren();
+[
+    processHoverAbfrage,
+    processTouchLayoutAbfrage
+]
+    .filter(Boolean)
+    .forEach(
+        function (abfrage) {
+            if (
+                typeof abfrage
+                    .addEventListener ===
+                "function"
+            ) {
+                abfrage.addEventListener(
+                    "change",
+                    seitenzustandAnfordern
+                );
+            } else {
+                abfrage.addListener(
+                    seitenzustandAnfordern
+                );
+            }
+        }
+    );
 
 
 /* ==================================================
    6. AKTIVER NAVIGATIONSPUNKT BEIM SCROLLEN
 ================================================== */
 
-let navAnimationFrame =
-    null;
+let letzterNavBereich;
+
 
 function aktivenNavLinkSetzen(
     bereichId
 ) {
+
+    if (
+        letzterNavBereich ===
+        bereichId
+    ) {
+        return;
+    }
 
     navLinks.forEach(
         function (link) {
@@ -306,6 +503,7 @@ function aktivenNavLinkSetzen(
                 istAktiv
             );
 
+
             if (istAktiv) {
 
                 link.setAttribute(
@@ -321,13 +519,13 @@ function aktivenNavLinkSetzen(
             }
         }
     );
+
+    letzterNavBereich =
+        bereichId;
 }
 
 
 function navigationAktualisieren() {
-
-    navAnimationFrame =
-        null;
 
     if (
         navBereiche.length === 0
@@ -335,17 +533,20 @@ function navigationAktualisieren() {
         return;
     }
 
+
     const viewportHoehe =
         window.innerHeight ||
         document.documentElement.clientHeight;
 
+
     /*
-       Die gedachte Aktiv-Linie liegt
-       etwa bei 32 % der Bildschirmhöhe.
+       Aktiv-Linie bei ungefähr
+       32 % der Bildschirmhöhe.
     */
 
     const aktivLinie =
         viewportHoehe * 0.32;
+
 
     let aktiverBereich =
         null;
@@ -370,8 +571,30 @@ function navigationAktualisieren() {
 
 
     /*
-       Oberhalb des ersten Navi-Bereichs
-       wird kein Menüpunkt markiert.
+       Im Kontaktbereich bleibt kein
+       regulärer Menüpunkt aktiv.
+    */
+
+    if (kontaktBereich) {
+
+        const kontaktPosition =
+            kontaktBereich
+                .getBoundingClientRect();
+
+        if (
+            kontaktPosition.top <=
+            aktivLinie
+        ) {
+
+            aktivenNavLinkSetzen(null);
+            return;
+        }
+    }
+
+
+    /*
+       Oberhalb des ersten Bereichs
+       kein aktiver Menüpunkt.
     */
 
     if (!aktiverBereich) {
@@ -380,32 +603,21 @@ function navigationAktualisieren() {
             navBereiche[0]
                 .getBoundingClientRect();
 
+
         if (
             ersterBereich.top >
             aktivLinie
         ) {
 
-            navLinks.forEach(
-                function (link) {
-
-                    link.classList.remove(
-                        "active"
-                    );
-
-                    link.removeAttribute(
-                        "aria-current"
-                    );
-                }
-            );
+            aktivenNavLinkSetzen(null);
 
             return;
         }
 
 
         /*
-           Falls wir bereits unterhalb
-           des letzten Bereichs sind,
-           bleibt der letzte Punkt aktiv.
+           Bis zum Kontakt bleibt der letzte
+           reguläre Bereich aktiv.
         */
 
         aktiverBereich =
@@ -421,31 +633,530 @@ function navigationAktualisieren() {
 }
 
 
-function navScrollAnfordern() {
+function seitenzustandAktualisieren() {
+
+    seitenAnimationFrame =
+        null;
+
+    navigationAktualisieren();
+    processFortschrittAktualisieren();
+    headerAktualisieren();
+}
+
+
+function seitenzustandAnfordern() {
 
     if (
-        navAnimationFrame !==
+        seitenAnimationFrame !==
         null
     ) {
         return;
     }
 
-    navAnimationFrame =
+    seitenAnimationFrame =
         window.requestAnimationFrame(
-            navigationAktualisieren
+            seitenzustandAktualisieren
         );
 }
 
 
 window.addEventListener(
     "scroll",
-    navScrollAnfordern,
+    seitenzustandAnfordern,
     { passive: true }
 );
 
 window.addEventListener(
     "resize",
-    navScrollAnfordern
+    seitenzustandAnfordern
 );
 
-navigationAktualisieren();
+seitenzustandAktualisieren();
+
+
+/* ==================================================
+   7. FORMULAR STATUS
+================================================== */
+
+function formularStatusSetzen(
+    nachricht = "",
+    typ = ""
+) {
+
+    if (!formularStatus) {
+        return;
+    }
+
+    formularStatus.textContent =
+        nachricht;
+
+    formularStatus.classList.remove(
+        "success",
+        "error"
+    );
+
+
+    if (typ) {
+
+        formularStatus.classList.add(
+            typ
+        );
+    }
+}
+
+
+/* ==================================================
+   8. FORMULAR BUTTON
+================================================== */
+
+function formularButtonLaden(
+    istLaden
+) {
+
+    if (!formularButton) {
+        return;
+    }
+
+
+    formularButton.disabled =
+        istLaden;
+
+
+    const text =
+        formularButton.querySelector(
+            "span"
+        );
+
+
+    if (!text) {
+        return;
+    }
+
+
+    if (
+        !text.dataset.originalHtml
+    ) {
+
+        text.dataset.originalHtml =
+            text.innerHTML;
+    }
+
+
+    if (istLaden) {
+
+        text.innerHTML = `
+            <small>
+                WIRD GESENDET
+            </small>
+
+            Anfrage senden …
+        `;
+
+    } else {
+
+        text.innerHTML =
+            text.dataset.originalHtml;
+    }
+}
+
+
+/* ==================================================
+   9. FORMULARDATEN
+================================================== */
+
+function formularDatenErstellen(
+    formular
+) {
+
+    const daten =
+        new FormData(
+            formular
+        );
+
+
+    return {
+
+        name:
+            String(
+                daten.get("name") || ""
+            ).trim(),
+
+        company:
+            String(
+                daten.get("company") || ""
+            ).trim(),
+
+        email:
+            String(
+                daten.get("email") || ""
+            ).trim(),
+
+        phone:
+            String(
+                daten.get("phone") || ""
+            ).trim(),
+
+        website:
+            String(
+                daten.get("website") || ""
+            ).trim(),
+
+        project_type:
+            String(
+                daten.get("project_type") || ""
+            ).trim(),
+
+        message:
+            String(
+                daten.get("message") || ""
+            ).trim(),
+
+        website_check:
+            String(
+                daten.get("website_check") || ""
+            ).trim(),
+
+        privacy_consent:
+            String(
+                daten.get("privacy_consent") || ""
+            ).trim()
+    };
+}
+
+
+function turnstileFehlerErstellen() {
+    const fehler =
+        new Error(
+            "Turnstile konnte kein Token erstellen."
+        );
+
+    fehler.name =
+        "TurnstileError";
+
+    return fehler;
+}
+
+
+function turnstileAnfrageBeenden(
+    token = ""
+) {
+    if (!turnstileAnfrage) {
+        return;
+    }
+
+    const aktuelleAnfrage =
+        turnstileAnfrage;
+
+    turnstileAnfrage =
+        null;
+
+    window.clearTimeout(
+        aktuelleAnfrage.timeoutId
+    );
+
+    if (token) {
+        aktuelleAnfrage.resolve(token);
+    } else {
+        aktuelleAnfrage.reject(
+            turnstileFehlerErstellen()
+        );
+    }
+}
+
+
+function turnstileInitialisieren() {
+    if (
+        !turnstileContainer ||
+        !window.turnstile ||
+        turnstileWidgetId !== null
+    ) {
+        return;
+    }
+
+    const siteKey =
+        String(
+            turnstileContainer
+                .dataset.sitekey || ""
+        ).trim();
+
+    if (!siteKey) {
+        return;
+    }
+
+    try {
+        turnstileWidgetId =
+            window.turnstile.render(
+                turnstileContainer,
+                {
+                    sitekey: siteKey,
+                    action:
+                        "contact_form",
+                    execution:
+                        "execute",
+                    appearance:
+                        "interaction-only",
+                    theme:
+                        "dark",
+                    language:
+                        "de",
+                    "response-field":
+                        false,
+                    callback:
+                        function (token) {
+                            turnstileAnfrageBeenden(
+                                token
+                            );
+                        },
+                    "error-callback":
+                        function () {
+                            turnstileAnfrageBeenden();
+                        },
+                    "expired-callback":
+                        function () {
+                            turnstileAnfrageBeenden();
+                        },
+                    "timeout-callback":
+                        function () {
+                            turnstileAnfrageBeenden();
+                        }
+                }
+            );
+    } catch {
+        turnstileWidgetId =
+            null;
+    }
+}
+
+
+function turnstileTokenErstellen() {
+    turnstileInitialisieren();
+
+    if (
+        !window.turnstile ||
+        turnstileWidgetId === null
+    ) {
+        return Promise.reject(
+            turnstileFehlerErstellen()
+        );
+    }
+
+    return new Promise(
+        function (resolve, reject) {
+            turnstileAnfrage = {
+                resolve,
+                reject,
+                timeoutId:
+                    window.setTimeout(
+                        function () {
+                            turnstileAnfrageBeenden();
+                        },
+                        120000
+                    )
+            };
+
+            try {
+                window.turnstile.execute(
+                    turnstileWidgetId
+                );
+            } catch {
+                turnstileAnfrageBeenden();
+            }
+        }
+    );
+}
+
+
+function turnstileZuruecksetzen() {
+    if (
+        !window.turnstile ||
+        turnstileWidgetId === null
+    ) {
+        return;
+    }
+
+    try {
+        window.turnstile.reset(
+            turnstileWidgetId
+        );
+    } catch {
+        // Ein fehlender Reset darf die Formular-UX nicht blockieren.
+    }
+}
+
+
+/* ==================================================
+   10. FORMULAR SENDEN
+================================================== */
+
+async function projektAnfrageSenden(
+    event
+) {
+
+    event.preventDefault();
+
+
+    if (
+        !projektFormular ||
+        formularWirdGesendet
+    ) {
+        return;
+    }
+
+
+    /*
+       Native Browser-Validierung
+    */
+
+    if (
+        !projektFormular.checkValidity()
+    ) {
+
+        projektFormular.reportValidity();
+
+        return;
+    }
+
+
+    const daten =
+        formularDatenErstellen(
+            projektFormular
+        );
+
+
+    formularStatusSetzen();
+
+    formularWirdGesendet =
+        true;
+
+    formularButtonLaden(
+        true
+    );
+
+
+    try {
+
+        daten.turnstile_token =
+            await turnstileTokenErstellen();
+
+        const antwort =
+            await fetch(
+                "/api/contact",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json",
+
+                        "Accept":
+                            "application/json"
+                    },
+
+                    body:
+                        JSON.stringify(
+                            daten
+                        )
+                }
+            );
+
+
+        let ergebnis =
+            null;
+
+
+        try {
+
+            ergebnis =
+                await antwort.json();
+
+        } catch {
+
+            ergebnis =
+                null;
+        }
+
+
+        if (!antwort.ok) {
+
+            formularStatusSetzen(
+                ergebnis?.message ||
+                "Die Anfrage konnte momentan nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie direkt an info@saentiswebdesign.ch.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        formularStatusSetzen(
+            ergebnis?.message ||
+            "Vielen Dank. Ihre Anfrage wurde gesendet.",
+            "success"
+        );
+
+
+        projektFormular.reset();
+
+
+    } catch (fehler) {
+
+        formularStatusSetzen(
+            fehler?.name ===
+                "TurnstileError"
+                ? "Die Anfrage konnte nicht bestätigt werden. Bitte versuchen Sie es erneut."
+                : "Die Anfrage konnte momentan nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie direkt an info@saentiswebdesign.ch.",
+            "error"
+        );
+
+
+    } finally {
+
+        formularWirdGesendet =
+            false;
+
+        formularButtonLaden(
+            false
+        );
+
+        turnstileZuruecksetzen();
+    }
+}
+
+
+/* ==================================================
+   11. FORMULAR INITIALISIEREN
+================================================== */
+
+if (
+    projektFormular
+) {
+
+    turnstileInitialisieren();
+
+    projektFormular.addEventListener(
+        "submit",
+        projektAnfrageSenden
+    );
+
+
+    /*
+       Fehlermeldung entfernen,
+       sobald wieder geschrieben wird.
+    */
+
+    projektFormular.addEventListener(
+        "input",
+        function () {
+
+            if (
+                formularStatus &&
+                formularStatus.classList.contains(
+                    "error"
+                )
+            ) {
+
+                formularStatusSetzen();
+            }
+        }
+    );
+}

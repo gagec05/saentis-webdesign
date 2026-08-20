@@ -13,7 +13,7 @@
 
   <meta
     name="description"
-    content="Professionelles Webdesign für KMU und Handwerksbetriebe in St. Gallen und der Ostschweiz. Individuelle, schnelle und responsive Websites von Säntis Webdesign."
+    content="Professionelles Webdesign für KMU und Handwerksbetriebe in St. Gallen und der Ostschweiz. Individuelle Websites für einen starken Auftritt, schnelle Ladezeiten und klare Anfragen."
   >
 
   <meta name="robots" content="index, follow">
@@ -33,35 +33,45 @@
   <link
     rel="icon"
     type="image/png"
-    href="/Bilder/logo-mark.png"
+    sizes="32x32"
+    href="/Bilder/favicon-32.png"
   >
 
   <link
     rel="apple-touch-icon"
-    href="/Bilder/logo-mark.png"
+    sizes="180x180"
+    href="/Bilder/apple-touch-icon.png"
   >
 
 
   <!-- ==================================================
-       OPEN GRAPH
+       PERFORMANCE
+  ================================================== -->
+
+  <link
+    rel="preload"
+    as="image"
+    href="/Bilder/hero-head-1280.webp"
+    type="image/webp"
+    imagesrcset="/Bilder/hero-head-768.webp 768w, /Bilder/hero-head-1280.webp 1280w, /Bilder/hero-head-1672.webp 1672w"
+    imagesizes="(max-width: 480px) calc(100vw - 40px), (max-width: 1100px) min(780px, calc(100vw - 48px)), min(50vw, 780px)"
+    fetchpriority="high"
+  >
+
+  <link
+    rel="stylesheet"
+    href="style.css?v=2.3"
+  >
+
+
+  <!-- ==================================================
+       OPEN GRAPH / WHATSAPP / FACEBOOK
   ================================================== -->
 
   <meta property="og:type" content="website">
-
-  <meta
-    property="og:locale"
-    content="de_CH"
-  >
-
-  <meta
-    property="og:site_name"
-    content="Säntis Webdesign"
-  >
-
-  <meta
-    property="og:url"
-    content="https://saentiswebdesign.ch/"
-  >
+  <meta property="og:locale" content="de_CH">
+  <meta property="og:site_name" content="Säntis Webdesign">
+  <meta property="og:url" content="https://saentiswebdesign.ch/">
 
   <meta
     property="og:title"
@@ -70,18 +80,22 @@
 
   <meta
     property="og:description"
-    content="Professionelles Webdesign für KMU und Handwerksbetriebe in St. Gallen und der Ostschweiz. Individuelle, schnelle und responsive Websites."
+    content="Individuelle, schnelle und professionelle Websites für Schweizer KMU und Handwerksbetriebe in St. Gallen und der Ostschweiz."
   >
 
   <meta
     property="og:image"
-    content="https://saentiswebdesign.ch/Bilder/saentis-social-preview.png"
+    content="https://saentiswebdesign.ch/Bilder/saentis-social-preview-1200.jpg"
   >
 
   <meta
     property="og:image:secure_url"
-    content="https://saentiswebdesign.ch/Bilder/saentis-social-preview.png"
+    content="https://saentiswebdesign.ch/Bilder/saentis-social-preview-1200.jpg"
   >
+
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
 
   <meta
     property="og:image:alt"
@@ -105,12 +119,12 @@
 
   <meta
     name="twitter:description"
-    content="Professionelles Webdesign für KMU und Handwerksbetriebe in St. Gallen und der Ostschweiz. Individuelle, schnelle und responsive Websites."
+    content="Individuelle, schnelle und professionelle Websites für Schweizer KMU und Handwerksbetriebe in St. Gallen und der Ostschweiz."
   >
 
   <meta
     name="twitter:image"
-    content="https://saentiswebdesign.ch/Bilder/saentis-social-preview.png"
+    content="https://saentiswebdesign.ch/Bilder/saentis-social-preview-1200.jpg"
   >
 
   <meta
@@ -182,26 +196,10 @@
   }
   </script>
 
-
-  <!-- ==================================================
-       PERFORMANCE
-  ================================================== -->
-
-  <link
-    rel="preload"
-    href="/Bilder/logo-mark.png"
-    as="image"
-  >
-
-  <link
-    rel="stylesheet"
-    href="style.css?v=1.8"
-  >
-
 </head>
 
 
-<body data-version="1.8">
+<body data-version="2.3">
 
 
 <header class="header" id="header">
@@ -215,13 +213,12 @@
     >
 
       <img
-        src="Bilder/logo-mark.png"
+        src="Bilder/logo-mark-256.png"
         alt="Säntis Webdesign"
-        width="515"
-        height="405"
+        width="256"
+        height="249"
         loading="eager"
         decoding="async"
-        fetchpriority="high"
       >
 
     </a>
@@ -244,8 +241,14 @@
     <ul class="nav-links" id="nav-links">
 
       <li>
-        <a href="#leistungen">
-          Leistungen
+        <a href="#angebot">
+          Angebot
+        </a>
+      </li>
+
+      <li>
+        <a href="#webdesign-st-gallen">
+          Webdesign St. Gallen
         </a>
       </li>
 
@@ -267,15 +270,16 @@
         </a>
       </li>
 
+      <li class="nav-cta-item">
+        <a
+          href="#kontakt"
+          class="nav-cta"
+        >
+          Projekt anfragen
+        </a>
+      </li>
+
     </ul>
-
-
-    <a
-      href="#kontakt"
-      class="nav-cta"
-    >
-      Projekt anfragen
-    </a>
 
   </nav>
 
@@ -315,16 +319,39 @@
 
         </p>
 
+
         <h1>
-          Webdesign für
-          <span class="no-break">KMU in St. Gallen.</span>
-          <em>Ihr Unternehmen ist stark. Ihre Website sollte es auch sein.</em>
+
+          <span class="hero-seo-title">
+
+            Webdesign für
+
+            <span class="no-break">
+              KMU in St. Gallen.
+            </span>
+
+          </span>
+
+
+          <em class="hero-main-title">
+
+            <span>
+              Ihr Unternehmen ist stark.
+            </span>
+
+            <span>
+              Ihre Website sollte es auch sein.
+            </span>
+
+          </em>
+
         </h1>
 
+
         <p class="hero-lead">
-          Individuelle Websites für KMU und Handwerksbetriebe in St. Gallen,
-          der Ostschweiz und der ganzen Schweiz – modern gestaltet,
-          technisch sauber und auf jedem Gerät überzeugend.
+          Individuelle Websites für KMU und Handwerksbetriebe – für einen
+          professionellen ersten Eindruck, mehr Vertrauen und einen klaren Weg
+          von der Google-Suche bis zur Anfrage.
         </p>
 
 
@@ -336,7 +363,6 @@
           >
             Projekt besprechen
           </a>
-
 
           <a
             href="#referenzen"
@@ -355,11 +381,11 @@
           </span>
 
           <span>
-            Responsive
+            Schnell auf jedem Gerät
           </span>
 
           <span>
-            Technische SEO
+            Technisch SEO-optimiert
           </span>
 
         </div>
@@ -377,176 +403,18 @@
           aria-hidden="true"
         ></div>
 
-
-        <div class="desktop-frame">
-
-          <div class="frame-bar">
-
-            <i></i>
-            <i></i>
-            <i></i>
-
-            <span>
-              saentiswebdesign.ch
-            </span>
-
-          </div>
-
-
-          <div class="frame-page">
-
-            <div class="demo-nav">
-
-              <b>
-                SÄNTIS
-              </b>
-
-              <div>
-                <i></i>
-                <i></i>
-                <i></i>
-              </div>
-
-            </div>
-
-
-            <div class="demo-hero">
-
-              <small>
-                DIGITALER AUFTRITT
-              </small>
-
-
-              <strong>
-                Websites, die
-                <span>
-                  Wirkung zeigen.
-                </span>
-              </strong>
-
-
-              <p>
-                Modern. Klar. Professionell.
-              </p>
-
-
-              <button
-                type="button"
-                tabindex="-1"
-                aria-hidden="true"
-              >
-                Projekt starten
-              </button>
-
-            </div>
-
-
-            <div class="demo-row">
-
-              <i></i>
-              <i></i>
-              <i></i>
-
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <div class="phone-frame">
-
-          <div class="phone-notch"></div>
-
-
-          <div class="phone-brand">
-            SÄNTIS
-          </div>
-
-
-          <div class="phone-copy">
-
-            <small>
-              WEBDESIGN
-            </small>
-
-            <b>
-              Digital.
-              <span>
-                Stark.
-              </span>
-            </b>
-
-            <i></i>
-            <i></i>
-
-          </div>
-
-        </div>
-
-
-        <div
-          class="stage-annotations"
-          aria-hidden="true"
+        <img
+          class="hero-stage-image"
+          src="Bilder/hero-head-1280.webp"
+          srcset="Bilder/hero-head-768.webp 768w, Bilder/hero-head-1280.webp 1280w, Bilder/hero-head-1672.webp 1672w"
+          sizes="(max-width: 480px) calc(100vw - 40px), (max-width: 1100px) min(780px, calc(100vw - 48px)), min(50vw, 780px)"
+          alt="Säntis Webdesign auf Laptop und Smartphone mit Responsive-Hinweisen"
+          width="1280"
+          height="721"
+          fetchpriority="high"
+          loading="eager"
+          decoding="async"
         >
-
-          <div class="stage-annotation annotation-responsive">
-
-            <span class="annotation-index">
-              01
-            </span>
-
-            <span class="annotation-copy">
-
-              <b>Responsive</b>
-
-              <small>
-                Desktop · Tablet · Mobile
-              </small>
-
-            </span>
-
-          </div>
-
-
-          <div class="stage-annotation annotation-performance">
-
-            <span class="annotation-index">
-              02
-            </span>
-
-            <span class="annotation-copy">
-
-              <b>Performance</b>
-
-              <small>
-                Schnell &amp; sauber entwickelt
-              </small>
-
-            </span>
-
-          </div>
-
-
-          <div class="stage-annotation annotation-individual">
-
-            <span class="annotation-index">
-              03
-            </span>
-
-            <span class="annotation-copy">
-
-              <b>Individuell</b>
-
-              <small>
-                Keine austauschbaren Templates
-              </small>
-
-            </span>
-
-          </div>
-
-        </div>
 
       </div>
 
@@ -579,71 +447,141 @@
 
     <div class="positioning-inner reveal container">
 
-      <p class="section-index">
-        01 / POSITIONIERUNG
-      </p>
+      <div class="positioning-head">
+
+        <p class="section-index">
+          01 / POSITIONIERUNG
+        </p>
 
 
-      <h2 class="title title-positioning">
+        <h2 class="title title-positioning">
 
-        Eine Website ist nicht einfach eine Seite im Internet.
+          Eine Website ist nicht einfach eine Seite im Internet.
+
+          <span>
+            Sie ist der erste Eindruck Ihres Unternehmens.
+          </span>
+
+        </h2>
+
+
+        <div class="positioning-intro">
+
+          <span class="positioning-intro-label">
+            DER ERSTE EINDRUCK
+          </span>
+
+          <p>
+            Noch bevor ein Interessent Kontakt aufnimmt, vermittelt Ihre
+            Website Qualität, Vertrauen und Professionalität.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="positioning-flow">
+
+
+        <article class="positioning-point">
+
+          <div class="positioning-number">
+            01
+          </div>
+
+          <div class="positioning-content">
+
+            <span class="positioning-label">
+              VERTRAUEN
+            </span>
+
+            <h3>
+              Kompetenz muss sichtbar werden.
+            </h3>
+
+            <p>
+              Ein professioneller Auftritt vermittelt Qualität und schafft
+              Vertrauen, noch bevor der erste persönliche Kontakt entsteht.
+            </p>
+
+          </div>
+
+        </article>
+
+
+        <article class="positioning-point">
+
+          <div class="positioning-number">
+            02
+          </div>
+
+          <div class="positioning-content">
+
+            <span class="positioning-label">
+              KLARHEIT
+            </span>
+
+            <h3>
+              Besucher müssen sofort verstehen, worum es geht.
+            </h3>
+
+            <p>
+              Leistungen, Nutzen und Inhalte werden so aufgebaut, dass
+              Interessenten schnell erfassen, was Ihr Unternehmen bietet
+              und warum sie bei Ihnen richtig sind.
+            </p>
+
+          </div>
+
+        </article>
+
+
+        <article class="positioning-point">
+
+          <div class="positioning-number">
+            03
+          </div>
+
+          <div class="positioning-content">
+
+            <span class="positioning-label">
+              ANFRAGE
+            </span>
+
+            <h3>
+              Der nächste Schritt muss einfach sein.
+            </h3>
+
+            <p>
+              Klare Kontaktwege führen Interessenten ohne Umwege vom ersten
+              Eindruck zur konkreten Anfrage.
+            </p>
+
+          </div>
+
+        </article>
+
+      </div>
+
+
+      <div class="positioning-result">
 
         <span>
-          Sie ist der erste Eindruck Ihres Unternehmens.
+          VERTRAUEN
         </span>
 
-      </h2>
+        <i aria-hidden="true"></i>
 
+        <span>
+          KLARHEIT
+        </span>
 
-      <div class="positioning-points">
+        <i aria-hidden="true"></i>
 
-
-        <article class="positioning-point">
-
-          <span aria-hidden="true">
-            01
-          </span>
-
-
-          <div>
-
-            <h3>
-              Vertrauen entsteht vor dem ersten Gespräch.
-            </h3>
-
-            <p>
-              Bevor jemand anruft, eine Offerte verlangt oder Ihr Geschäft
-              besucht, sieht er häufig zuerst Ihre Website. Genau dort muss
-              Kompetenz sichtbar werden.
-            </p>
-
-          </div>
-
-        </article>
-
-
-        <article class="positioning-point">
-
-          <span aria-hidden="true">
-            02
-          </span>
-
-
-          <div>
-
-            <h3>
-              Klarheit führt Besucher zur richtigen Entscheidung.
-            </h3>
-
-            <p>
-              Leistungen, Nutzen und Kontaktwege werden so strukturiert, dass
-              Interessenten schnell verstehen, was Ihr Unternehmen anbietet
-              und wie sie den nächsten Schritt machen können.
-            </p>
-
-          </div>
-
-        </article>
+        <strong>
+          ANFRAGE
+        </strong>
 
       </div>
 
@@ -679,10 +617,19 @@
       </h2>
 
 
-      <p class="section-lead">
-        Design, Technik und Nutzerführung aus einem Guss –
-        ohne unnötigen Ballast.
-      </p>
+      <div class="services-intro">
+
+        <span>
+          DESIGN · TECHNIK · WIRKUNG
+        </span>
+
+        <p>
+          Individuelles Design, schnelle Technik und eine klare Nutzerführung
+          greifen ineinander – damit Ihr Unternehmen professionell auftritt
+          und Interessenten leichter zur Anfrage finden.
+        </p>
+
+      </div>
 
     </div>
 
@@ -690,38 +637,48 @@
     <div class="service-showcase container">
 
 
+      <!-- 01 / INDIVIDUELLER AUFTRITT -->
+
       <article class="service-main reveal">
 
         <div class="service-meta">
 
-          <span>01</span>
+          <span>
+            01
+          </span>
 
           <span>
-            DESIGN &amp; ENTWICKLUNG
+            INDIVIDUELLER AUFTRITT
           </span>
 
         </div>
 
 
         <h3>
-          Webdesign, das nicht nach Vorlage aussieht.
+          Eine Website, die zu Ihrem Unternehmen passt.
         </h3>
 
 
         <p>
-          Individuelle Gestaltung mit klarer visueller Hierarchie,
-          hochwertiger Typografie und einer Benutzerführung, die Besucher
-          gezielt durch Ihre Leistungen führt.
+          Kein austauschbarer Baukasten-Auftritt. Gestaltung, Struktur und
+          Inhalte werden passend zu Ihrem Unternehmen entwickelt – damit Ihre
+          Qualität auch online professionell und glaubwürdig sichtbar wird.
         </p>
 
 
         <div class="service-tags">
 
-          <span>Individuelles Design</span>
+          <span>
+            Individuelles Design
+          </span>
 
-          <span>HTML / CSS / JavaScript</span>
+          <span>
+            HTML / CSS / JavaScript
+          </span>
 
-          <span>Erweiterbar</span>
+          <span>
+            Erweiterbar
+          </span>
 
         </div>
 
@@ -730,26 +687,17 @@
           class="service-device-preview"
           aria-hidden="true"
         >
-
-          <div class="preview-desktop">
-            <span></span>
-            <i></i>
-            <i></i>
-            <i></i>
-          </div>
-
-
-          <div class="preview-tablet">
-            <span></span>
-            <i></i>
-          </div>
-
-
-          <div class="preview-phone">
-            <span></span>
-            <i></i>
-            <i></i>
-          </div>
+          <img
+            class="service-device-cutout"
+            src="./Bilder/services-device-cutout-768.webp"
+            srcset="./Bilder/services-device-cutout-768.webp 768w, ./Bilder/services-device-cutout-1280.webp 1280w"
+            sizes="(max-width: 680px) 88vw, (max-width: 1100px) 410px, 28vw"
+            alt=""
+            loading="lazy"
+            decoding="async"
+            width="768"
+            height="512"
+          >
 
         </div>
 
@@ -759,54 +707,82 @@
       <div class="service-side">
 
 
-        <article class="service-panel reveal">
+        <!-- 02 / RESPONSIVE & PERFORMANCE -->
 
-          <span aria-hidden="true">
+        <article class="service-panel service-panel-performance reveal">
+
+          <span class="service-number">
             02
           </span>
 
 
+          <div
+            class="performance-mark"
+            aria-hidden="true"
+          >
+            <svg
+              viewBox="0 0 64 64"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <defs>
+                <linearGradient id="performanceMarkGradient" x1="12" y1="10" x2="52" y2="54" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#46d2ff" />
+                  <stop offset="1" stop-color="#1677ff" />
+                </linearGradient>
+              </defs>
+              <rect x="10" y="11" width="44" height="44" rx="16" fill="url(#performanceMarkGradient)" fill-opacity=".08" />
+              <rect x="10.5" y="11.5" width="43" height="43" rx="15.5" stroke="#1677ff" stroke-opacity=".14" />
+              <path d="M20 39C20 32.3726 25.3726 27 32 27C38.6274 27 44 32.3726 44 39" stroke="url(#performanceMarkGradient)" stroke-width="2.5" stroke-linecap="round" />
+              <path d="M32 39L39 31" stroke="url(#performanceMarkGradient)" stroke-width="2.5" stroke-linecap="round" />
+              <circle cx="32" cy="39" r="2.5" fill="#1677ff" />
+            </svg>
+          </div>
+
+
           <h3>
-            Responsive &amp; Performance
+            Schnell laden. Klar zum nächsten Schritt führen.
           </h3>
 
 
           <p>
-            Ein konsistenter Auftritt auf Desktop, Tablet und Smartphone –
-            schnell, stabil und sauber aufgebaut.
+            Schnelle Ladezeiten, eine saubere Struktur und klare
+            Nutzerführung helfen Besuchern, Inhalte sofort zu verstehen und
+            ohne Umwege zur Anfrage zu finden.
           </p>
 
 
           <div
-            class="device-lines"
+            class="service-performance-metric"
             aria-hidden="true"
           >
-            <i></i>
-            <i></i>
-            <i></i>
+            <span>Performance</span>
+            <div class="performance-metric-row">
+              <strong>98</strong>
+              <small>/ 100</small>
+            </div>
+            <div class="performance-metric-bars">
+              <i></i>
+              <i></i>
+              <i></i>
+              <i></i>
+              <i></i>
+            </div>
+            <small class="performance-metric-label">Schnelle Technik</small>
           </div>
 
         </article>
 
 
+        <!-- 03 / SEO & ANFRAGEN -->
+
         <article
           class="service-panel service-panel-dark reveal"
         >
 
-          <span aria-hidden="true">
+          <span class="service-number">
             03
           </span>
-
-
-          <h3>
-            Technische SEO &amp; Conversion
-          </h3>
-
-
-          <p>
-            Saubere technische Grundlagen für Suchmaschinen und klare
-            Kontaktwege, damit Interessenten ohne Umwege zur Anfrage gelangen.
-          </p>
 
 
           <div
@@ -819,6 +795,18 @@
             <i></i>
           </div>
 
+
+          <h3>
+            Gefunden werden. Interessenten zur Anfrage führen.
+          </h3>
+
+
+          <p>
+            Technisch saubere Grundlagen helfen Suchmaschinen, Ihre Website
+            richtig einzuordnen. Klare Inhalte und Kontaktwege machen es
+            Interessenten einfach, den nächsten Schritt zu gehen.
+          </p>
+
         </article>
 
       </div>
@@ -828,23 +816,449 @@
 
     <div class="service-strip reveal container">
 
-      <span>Website-Redesign</span>
 
-      <i aria-hidden="true"></i>
+      <article>
 
-      <span>Kontaktformulare</span>
+        <span>
+          01
+        </span>
 
-      <i aria-hidden="true"></i>
+        <div>
 
-      <span>
-        Domain &amp; Veröffentlichung
-      </span>
+          <strong>
+            Website-Redesign
+          </strong>
 
-      <i aria-hidden="true"></i>
+          <p>
+            Bestehende Websites modernisieren und gezielt verbessern.
+          </p>
 
-      <span>
-        Technische Optimierung
-      </span>
+        </div>
+
+      </article>
+
+
+      <article>
+
+        <span>
+          02
+        </span>
+
+        <div>
+
+          <strong>
+            Kontaktformulare
+          </strong>
+
+          <p>
+            Klare Anfrageprozesse ohne unnötige Umwege.
+          </p>
+
+        </div>
+
+      </article>
+
+
+      <article>
+
+        <span>
+          03
+        </span>
+
+        <div>
+
+          <strong>
+            Domain &amp; Veröffentlichung
+          </strong>
+
+          <p>
+            Einrichtung, SSL und sauberer technischer Livegang.
+          </p>
+
+        </div>
+
+      </article>
+
+
+      <article>
+
+        <span>
+          04
+        </span>
+
+        <div>
+
+          <strong>
+            Technische Optimierung
+          </strong>
+
+          <p>
+            Schnelle Ladezeiten und eine saubere technische Grundlage.
+          </p>
+
+        </div>
+
+      </article>
+
+
+    </div>
+
+  </section>
+
+
+  <!-- ==================================================
+       ANGEBOT
+  ================================================== -->
+
+  <section
+    class="offer section"
+    id="angebot"
+  >
+
+    <div class="offer-inner container">
+
+      <div class="offer-head reveal">
+
+        <p class="section-index light">
+          03 / ANGEBOT
+        </p>
+
+        <h2 class="title title-section">
+          Welche Website passt zu
+
+          <span>
+            Ihrem Unternehmen?
+          </span>
+
+        </h2>
+
+        <div class="offer-intro">
+
+          <span>
+            PASSEND. KLAR. INDIVIDUELL.
+          </span>
+
+          <p>
+            Vom kompakten Onepager bis zur individuellen Unternehmenswebsite:
+            Der passende Umfang richtet sich nach Ihrem Unternehmen, Ihren
+            Inhalten und Ihren Zielen.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div
+        class="offer-models"
+        aria-label="Website-Lösungen"
+      >
+
+        <article class="offer-card reveal">
+
+          <div class="offer-card-meta">
+            <span>
+              01
+            </span>
+            <small>
+              KOMPAKTER AUFTRITT
+            </small>
+          </div>
+
+          <h3>
+            Onepager
+          </h3>
+
+          <p>
+            Für Selbstständige und kleinere Unternehmen, die einen kompakten,
+            professionellen Webauftritt benötigen.
+          </p>
+
+          <div class="offer-scope">
+
+            <span>
+              Typischer Leistungsumfang
+            </span>
+
+            <ul>
+              <li>Individuelles Webdesign</li>
+              <li>Responsive Umsetzung</li>
+              <li>Unternehmen &amp; Leistungen</li>
+              <li>Kontaktmöglichkeit</li>
+              <li>Technische SEO-Grundlage</li>
+              <li>Performanceoptimierung</li>
+            </ul>
+
+          </div>
+
+          <strong class="offer-card-outcome">
+            Alles Wesentliche kompakt auf einer Seite.
+          </strong>
+
+        </article>
+
+
+        <article class="offer-card offer-card-featured reveal">
+
+          <div class="offer-card-meta">
+            <span>
+              02
+            </span>
+            <small>
+              MEHR INHALT &amp; STRUKTUR
+            </small>
+          </div>
+
+          <h3>
+            Unternehmenswebsite
+          </h3>
+
+          <p>
+            Für KMU und Handwerksbetriebe mit mehreren Leistungen und einem
+            grösseren Informationsbedarf.
+          </p>
+
+          <div class="offer-scope">
+
+            <span>
+              Alles aus dem Onepager +
+            </span>
+
+            <ul>
+              <li>3–5 Seiten</li>
+              <li>Erweiterte Inhaltsstruktur</li>
+              <li>Referenzen / Projekte</li>
+              <li>Erweiterte Navigation</li>
+              <li>Kontaktformular</li>
+              <li>Mehr Raum für Inhalte</li>
+            </ul>
+
+          </div>
+
+          <strong class="offer-card-outcome">
+            Mehr Raum für Leistungen, Referenzen und Vertrauen.
+          </strong>
+
+        </article>
+
+
+        <article class="offer-card reveal">
+
+          <div class="offer-card-meta">
+            <span>
+              03
+            </span>
+            <small>
+              INDIVIDUELL ERWEITERBAR
+            </small>
+          </div>
+
+          <h3>
+            Individuelle Website
+          </h3>
+
+          <p>
+            Für Projekte mit besonderen Anforderungen, individuellen Inhalten
+            oder zusätzlichen Funktionen.
+          </p>
+
+          <div class="offer-scope">
+
+            <span>
+              Alles aus der Unternehmenswebsite +
+            </span>
+
+            <ul>
+              <li>Zusätzliche Seiten</li>
+              <li>Galerien / Produkte</li>
+              <li>Erweiterte Formulare</li>
+              <li>Individuelle Strukturen</li>
+              <li>Zusätzliche Funktionen</li>
+              <li>Nach Vereinbarung erweiterbar</li>
+            </ul>
+
+          </div>
+
+          <strong class="offer-card-outcome">
+            Individuell auf Ihr Projekt abgestimmt.
+          </strong>
+
+        </article>
+
+      </div>
+
+
+      <section
+        class="offer-included reveal"
+        aria-labelledby="offer-included-title"
+      >
+
+        <div class="offer-subhead">
+
+          <span>
+            IMMER DABEI
+          </span>
+
+          <h3 id="offer-included-title">
+            Was bei jeder Website dabei ist.
+          </h3>
+
+          <p>
+            Eine verlässliche Grundlage für einen professionellen Webauftritt.
+          </p>
+
+        </div>
+
+
+        <ul class="offer-feature-grid">
+
+          <li>
+            <strong>Responsive Design</strong>
+            <p>Optimiert für Desktop, Tablet und Smartphone.</p>
+          </li>
+
+          <li>
+            <strong>Individuelles Design</strong>
+            <p>Keine austauschbaren Standard-Templates.</p>
+          </li>
+
+          <li>
+            <strong>Technische SEO-Grundlage</strong>
+            <p>Saubere technische Struktur für Suchmaschinen.</p>
+          </li>
+
+          <li>
+            <strong>Performanceoptimierung</strong>
+            <p>Optimierte Bilder, sauberer Code und schnelle Ladezeiten.</p>
+          </li>
+
+          <li>
+            <strong>Kontaktmöglichkeit</strong>
+            <p>Klare Kontaktwege oder ein passendes Kontaktformular.</p>
+          </li>
+
+          <li>
+            <strong>SSL / HTTPS</strong>
+            <p>Sichere verschlüsselte Auslieferung.</p>
+          </li>
+
+          <li>
+            <strong>Veröffentlichung</strong>
+            <p>Technische Bereitstellung der fertigen Website.</p>
+          </li>
+
+          <li>
+            <strong>Google &amp; Indexierung</strong>
+            <p>
+              Technische Basis für Google Search Console und die Indexierung.
+            </p>
+          </li>
+
+        </ul>
+
+      </section>
+
+
+      <div class="offer-bottom">
+
+        <section
+          class="offer-extras reveal"
+          aria-labelledby="offer-extras-title"
+        >
+
+          <div class="offer-subhead">
+
+            <span>
+              AUF WUNSCH
+            </span>
+
+            <h3 id="offer-extras-title">
+              Auf Wunsch kümmere ich mich auch um den Rest.
+            </h3>
+
+            <p>
+              Diese Zusatzleistungen werden passend zum Projekt vereinbart
+              und in der Offerte separat ausgewiesen.
+            </p>
+
+          </div>
+
+
+          <ul class="offer-extra-list">
+            <li><strong>Domain &amp; DNS</strong><span>Einrichtung und technische Anbindung.</span></li>
+            <li><strong>Geschäftliche E-Mail</strong><span>Professionelle Adressen wie info@unternehmen.ch.</span></li>
+            <li><strong>Google Search Console</strong><span>Einrichtung, Verifizierung und Verbindung Ihrer Website.</span></li>
+            <li><strong>Bildoptimierung</strong><span>Bilder für Webqualität und Ladezeit optimieren.</span></li>
+            <li><strong>Bestehende Website überarbeiten</strong><span>Vorhandene Auftritte gezielt modernisieren.</span></li>
+            <li><strong>Zusätzliche Formulare</strong><span>Individuelle Anfrage- und Offertformulare.</span></li>
+            <li><strong>Wartung nach dem Livegang</strong><span>Anpassungen und Betreuung nach Vereinbarung.</span></li>
+          </ul>
+
+        </section>
+
+
+        <section
+          class="offer-quote reveal"
+          aria-labelledby="offer-quote-title"
+        >
+
+          <div class="offer-subhead">
+
+            <span>
+              INDIVIDUELLE OFFERTE
+            </span>
+
+            <h3 id="offer-quote-title">
+              So entsteht Ihre Offerte.
+            </h3>
+
+          </div>
+
+
+          <p>
+            Umfang und Preis richten sich nach Seitenzahl, Inhalten, Bildern,
+            besonderen Funktionen, Formularen, einer bestehenden Website und
+            zusätzlich gewünschten technischen Leistungen.
+          </p>
+
+
+          <ul class="offer-factors" aria-label="Faktoren für den Projektumfang">
+            <li>Seiten</li>
+            <li>Inhalte</li>
+            <li>Bilder</li>
+            <li>Funktionen</li>
+            <li>Formulare</li>
+            <li>Technik</li>
+          </ul>
+
+
+          <p class="offer-quote-result">
+            Nach einem kurzen Erstgespräch erhalten Sie eine transparente
+            Offerte mit klar definiertem Leistungsumfang.
+          </p>
+
+
+          <div class="offer-actions">
+
+            <a
+              href="#kontakt"
+              class="btn btn-primary"
+            >
+              Projekt besprechen
+            </a>
+
+            <a
+              href="#referenzen"
+              class="btn btn-ghost"
+            >
+              Referenz ansehen
+            </a>
+
+          </div>
+
+        </section>
+
+      </div>
 
     </div>
 
@@ -856,93 +1270,154 @@
   ================================================== -->
 
   <section
-    class="positioning"
+    class="positioning positioning-local"
     id="webdesign-st-gallen"
   >
 
     <div class="positioning-inner reveal container">
 
-      <p class="section-index">
-        WEBDESIGN AUS ST. GALLEN
-      </p>
+      <div class="positioning-head">
+
+        <p class="section-index">
+          04 / WEBDESIGN ST. GALLEN
+        </p>
 
 
-      <h2 class="title title-positioning">
+        <h2 class="title title-positioning">
 
-        Webdesign für Unternehmen in St. Gallen
+          Webdesign aus St.&nbsp;Gallen.
 
-        <span>
-          und der Ostschweiz.
-        </span>
-
-      </h2>
-
-
-      <div class="positioning-points">
-
-
-        <article class="positioning-point">
-
-          <span aria-hidden="true">
-            01
+          <span>
+            <em>
+              Für KMU in der Ostschweiz.
+            </em>
+            <strong>
+              Schweizweit umsetzbar.
+            </strong>
           </span>
 
-
-          <div>
-
-            <h3>
-              Professionelle Websites für KMU und Handwerksbetriebe.
-            </h3>
-
-            <p>
-              Säntis Webdesign entwickelt moderne und individuell
-              programmierte Websites für KMU, Handwerksbetriebe und
-              Selbstständige in St. Gallen und der Ostschweiz.
-              Der Fokus liegt auf professionellem Design, schnellen
-              Ladezeiten, responsiver Darstellung und einer technisch
-              sauberen Umsetzung.
-            </p>
-
-          </div>
-
-        </article>
+        </h2>
 
 
-        <article class="positioning-point">
+        <div class="positioning-intro">
 
-          <span aria-hidden="true">
-            02
+          <span class="positioning-intro-label">
+            KLAR. REGIONAL. DIGITAL.
           </span>
 
+          <p>
+            Persönlich in St.&nbsp;Gallen verankert. Digital in der ganzen
+            Schweiz umsetzbar – mit direktem Austausch und sauberer
+            Umsetzung.
+          </p>
 
-          <div>
-
-            <h3>
-              Regional verankert. Schweizweit verfügbar.
-            </h3>
-
-            <p>
-              Projekte können vollständig digital umgesetzt werden.
-              Deshalb sind Webprojekte neben St. Gallen, Gossau, Wil,
-              Rorschach, Wittenbach und Herisau auch für Unternehmen
-              in der ganzen Schweiz möglich.
-            </p>
-
-          </div>
-
-        </article>
+        </div>
 
       </div>
 
 
-      <div class="hero-actions">
+      <div class="positioning-flow">
 
-        <a
-          href="#kontakt"
-          class="btn btn-primary"
-        >
-          Website-Projekt besprechen
-        </a>
+
+        <article class="positioning-point positioning-point-local-primary">
+
+          <div class="positioning-number">
+            01
+          </div>
+
+          <div class="positioning-local-graphic positioning-local-graphic-region" aria-hidden="true">
+            <svg viewBox="0 0 120 72" role="presentation">
+              <circle cx="60" cy="36" r="3.8" />
+              <path d="M44 36A16 16 0 0 1 53 22" />
+              <path d="M67 22A16 16 0 0 1 76 36" />
+              <path d="M36 36A24 24 0 0 1 47 16" />
+              <path d="M73 16A24 24 0 0 1 84 36" />
+              <path d="M22 36H30" />
+              <path d="M90 36H98" />
+            </svg>
+          </div>
+
+          <div class="positioning-content">
+
+            <span class="positioning-label">
+              REGIONAL
+            </span>
+
+            <h3>
+              Nahe an Ihrem Unternehmen. Sauber in der Umsetzung.
+            </h3>
+
+            <p>
+              Für KMU und Handwerksbetriebe in St.&nbsp;Gallen und der
+              Ostschweiz entstehen Websites mit klarer Struktur, direkter
+              Abstimmung und einer Umsetzung, die professionell und
+              langfristig tragfähig bleibt.
+            </p>
+
+            <ul class="positioning-local-tags" aria-label="Regionaler Fokus">
+              <li>
+                St. Gallen
+              </li>
+              <li>
+                Ostschweiz
+              </li>
+              <li>
+                KMU & Handwerk
+              </li>
+            </ul>
+
+          </div>
+
+        </article>
+
+
+        <article class="positioning-point positioning-point-local-secondary">
+
+          <div class="positioning-number">
+            02
+          </div>
+
+          <div class="positioning-local-graphic positioning-local-graphic-network" aria-hidden="true">
+            <svg viewBox="0 0 120 72" role="presentation">
+              <circle cx="16" cy="36" r="4" />
+              <path d="M26 36H72" />
+              <path d="M72 36L94 24" />
+              <path d="M72 36L94 48" />
+              <circle cx="72" cy="36" r="3" />
+              <circle cx="100" cy="21" r="3" />
+              <circle cx="104" cy="50" r="3" />
+            </svg>
+          </div>
+
+          <div class="positioning-content">
+
+            <span class="positioning-label">
+              SCHWEIZWEIT
+            </span>
+
+            <h3>
+              Persönlich im Austausch. Digital in der ganzen Schweiz.
+            </h3>
+
+            <p>
+              Ob vor Ort oder komplett digital: Projekte lassen sich
+              effizient, verbindlich und ohne Agentur-Umwege umsetzen –
+              für Unternehmen in der ganzen Schweiz.
+            </p>
+
+            <div class="positioning-local-route" aria-hidden="true">
+              <span>
+                St.&nbsp;Gallen
+              </span>
+              <i></i>
+              <strong>
+                Schweizweit digital
+              </strong>
+            </div>
+
+          </div>
+
+        </article>
 
       </div>
 
@@ -966,7 +1441,7 @@
       <div class="case-copy reveal">
 
         <p class="section-index light">
-          03 / AUSGEWÄHLTES PROJEKT
+          05 / AUSGEWÄHLTES PROJEKT
         </p>
 
 
@@ -982,9 +1457,9 @@
 
 
         <p class="case-intro">
-          Für SavaWood Switzerland entstand ein vollständiger Webauftritt,
-          der handgefertigte Massivholztische hochwertig präsentiert und
-          Interessenten strukturiert bis zur Anfrage führt.
+          Für SavaWood Switzerland entstand ein individueller Webauftritt, der
+          handgefertigte Massivholztische hochwertig präsentiert und
+          Interessenten vom ersten Eindruck bis zur konkreten Anfrage führt.
         </p>
 
 
@@ -998,8 +1473,9 @@
             </span>
 
             <p>
-              Hochwertige handgefertigte Produkte brauchten einen digitalen
-              Auftritt, der Qualität, Individualität und Vertrauen sichtbar macht.
+              Hochwertige, handgefertigte Produkte brauchten einen digitalen
+              Auftritt, der Qualität, Individualität und Vertrauen ebenso
+              sichtbar macht wie das Handwerk selbst.
             </p>
 
           </article>
@@ -1013,7 +1489,8 @@
 
             <p>
               Individuelles Design, responsive Umsetzung, Produktkonfigurator
-              und ein klarer Anfrageprozess wurden zu einer Website verbunden.
+              und ein klarer Anfrageprozess wurden zu einem einheitlichen
+              Webauftritt verbunden.
             </p>
 
           </article>
@@ -1022,12 +1499,13 @@
           <article>
 
             <span>
-              ERGEBNIS
+              RESULTAT
             </span>
 
             <p>
-              Interessenten können Produkte entdecken, konfigurieren und direkt
-              eine unverbindliche Anfrage senden – auf jedem Gerät.
+              Besucher können die Produkte auf jedem Gerät entdecken,
+              Ausführungen konfigurieren und ohne Umwege eine unverbindliche
+              Anfrage senden.
             </p>
 
           </article>
@@ -1076,7 +1554,7 @@
             loading="lazy"
             decoding="async"
             width="1800"
-            height="882"
+            height="881"
           >
 
         </div>
@@ -1093,12 +1571,12 @@
           <div class="case-phone-screen">
 
             <img
-              src="./Bilder/savawood-mobile.png"
+              src="./Bilder/savawood-mobile-640.webp"
               alt="Mobile Ansicht der SavaWood Switzerland Website"
               loading="lazy"
               decoding="async"
-              width="830"
-              height="1446"
+              width="640"
+              height="1115"
             >
 
           </div>
@@ -1141,7 +1619,7 @@
     <div class="process-head reveal container">
 
       <p class="section-index">
-        04 / ZUSAMMENARBEIT
+        06 / ZUSAMMENARBEIT
       </p>
 
 
@@ -1188,7 +1666,9 @@
           aria-hidden="true"
         >
 
-          <span>01</span>
+          <span>
+            01
+          </span>
 
           <svg
             viewBox="0 0 24 24"
@@ -1231,7 +1711,9 @@
           aria-hidden="true"
         >
 
-          <span>02</span>
+          <span>
+            02
+          </span>
 
           <svg
             viewBox="0 0 24 24"
@@ -1274,7 +1756,9 @@
           aria-hidden="true"
         >
 
-          <span>03</span>
+          <span>
+            03
+          </span>
 
           <svg
             viewBox="0 0 24 24"
@@ -1317,7 +1801,9 @@
           aria-hidden="true"
         >
 
-          <span>04</span>
+          <span>
+            04
+          </span>
 
           <svg
             viewBox="0 0 24 24"
@@ -1363,23 +1849,28 @@
     id="ueber-mich"
   >
 
+    <div class="container reveal">
+
+      <p class="section-index light">
+        07 / PERSÖNLICH
+      </p>
+
+    </div>
+
+
     <div class="about-inner container">
 
 
       <div class="about-signature reveal">
-
-        <p class="section-index light">
-          05 / PERSÖNLICH
-        </p>
-
-
         <div class="about-logo-wrap">
 
           <img
-            src="Bilder/saentis-logo-transparent.png"
+            src="Bilder/saentis-logo-512.webp"
+            srcset="Bilder/saentis-logo-512.webp 512w, Bilder/saentis-logo-768.webp 768w"
+            sizes="(max-width: 680px) min(60vw, 210px), (max-width: 1100px) 240px, 280px"
             alt="Säntis Webdesign"
-            width="1254"
-            height="1254"
+            width="512"
+            height="288"
             loading="lazy"
             decoding="async"
           >
@@ -1406,9 +1897,13 @@
 
         <div class="about-location">
 
-          <span>ST. GALLEN</span>
+          <span>
+            ST. GALLEN
+          </span>
 
-          <span>SCHWEIZ</span>
+          <span>
+            SCHWEIZ
+          </span>
 
         </div>
 
@@ -1437,19 +1932,28 @@
         </p>
 
 
-        <p>
+        <p class="about-direct">
           Sie sprechen vom ersten Gespräch bis zur Veröffentlichung direkt mit
           der Person, die Ihre Website entwickelt.
         </p>
 
 
-        <div class="about-values">
+        <div
+          class="about-values"
+          aria-label="Grundsätze der Zusammenarbeit"
+        >
 
-          <span>Direkte Kommunikation</span>
+          <span>
+            Direkte Kommunikation
+          </span>
 
-          <span>Klare Entscheidungen</span>
+          <span>
+            Klare Entscheidungen
+          </span>
 
-          <span>Saubere Umsetzung</span>
+          <span>
+            Saubere Umsetzung
+          </span>
 
         </div>
 
@@ -1469,7 +1973,7 @@
 
 
   <!-- ==================================================
-       KONTAKT
+       KONTAKT / PROJEKTANFRAGE
   ================================================== -->
 
   <section
@@ -1480,7 +1984,7 @@
     <div class="contact-inner reveal container">
 
       <p class="section-index light">
-        06 / IHR PROJEKT
+        08 / IHR PROJEKT
       </p>
 
 
@@ -1496,9 +2000,9 @@
       </h2>
 
 
-      <p>
-        Erzählen Sie mir kurz von Ihrem Unternehmen und Ihrem gewünschten
-        Webauftritt. Die erste Kontaktaufnahme ist unverbindlich.
+      <p class="section-lead">
+        Erzählen Sie mir kurz von Ihrem Unternehmen und Ihrem Projekt.
+        Die erste Anfrage ist unverbindlich.
       </p>
 
 
@@ -1507,27 +2011,250 @@
 
         <div class="contact-action">
 
-          <a
-            href="mailto:info@saentiswebdesign.ch?subject=Projektanfrage%20S%C3%A4ntis%20Webdesign"
-            class="contact-main"
+
+          <form
+            class="project-form"
+            id="project-form"
+            action="/api/contact"
+            method="post"
           >
 
-            <span>
 
-              <small>
-                UNVERBINDLICH
-              </small>
+            <div class="form-grid">
 
-              Projekt besprechen
 
-            </span>
+              <label class="form-field">
 
-            <b
-              class="contact-arrow"
+                <span>
+                  Name *
+                </span>
+
+                <input
+                  type="text"
+                  name="name"
+                  autocomplete="name"
+                  required
+                >
+
+              </label>
+
+
+              <label class="form-field">
+
+                <span>
+                  Unternehmen
+                </span>
+
+                <input
+                  type="text"
+                  name="company"
+                  autocomplete="organization"
+                >
+
+              </label>
+
+
+              <label class="form-field">
+
+                <span>
+                  E-Mail *
+                </span>
+
+                <input
+                  type="email"
+                  name="email"
+                  autocomplete="email"
+                  required
+                >
+
+              </label>
+
+
+              <label class="form-field">
+
+                <span>
+                  Telefon
+                </span>
+
+                <input
+                  type="tel"
+                  name="phone"
+                  autocomplete="tel"
+                >
+
+              </label>
+
+
+              <label class="form-field form-field-wide">
+
+                <span>
+                  Bestehende Website
+                </span>
+
+                <input
+                  type="url"
+                  name="website"
+                  inputmode="url"
+                  placeholder="https://"
+                >
+
+              </label>
+
+
+              <label class="form-field form-field-wide">
+
+                <span>
+                  Was möchten Sie umsetzen? *
+                </span>
+
+                <select
+                  name="project_type"
+                  required
+                >
+
+                  <option
+                    value=""
+                    selected
+                  >
+                    Bitte auswählen
+                  </option>
+
+                  <option value="new-website">
+                    Neue Website
+                  </option>
+
+                  <option value="redesign">
+                    Bestehende Website modernisieren
+                  </option>
+
+                  <option value="optimization">
+                    Website optimieren
+                  </option>
+
+                  <option value="other">
+                    Anderes Projekt
+                  </option>
+
+                </select>
+
+              </label>
+
+
+              <label class="form-field form-field-wide">
+
+                <span>
+                  Nachricht *
+                </span>
+
+                <textarea
+                  name="message"
+                  rows="5"
+                  required
+                  placeholder="Erzählen Sie mir kurz, was Sie sich für Ihren Webauftritt wünschen."
+                ></textarea>
+
+              </label>
+
+            </div>
+
+
+            <!-- Honeypot gegen einfache Spam-Bots -->
+
+            <div
+              class="form-honeypot"
               aria-hidden="true"
-            ></b>
+            >
 
-          </a>
+              <label>
+
+                Website
+
+                <input
+                  type="text"
+                  name="website_check"
+                  tabindex="-1"
+                  autocomplete="off"
+                >
+
+              </label>
+
+            </div>
+
+
+            <!-- Öffentlichen Cloudflare Turnstile Site Key hier eintragen. -->
+
+            <div
+              id="turnstile-widget"
+              data-sitekey="0x4AAAAAAEWsY-4d3wb6xf3v"
+              aria-label="Sicherheitsprüfung"
+            ></div>
+
+
+            <div class="form-footer">
+
+
+              <p class="form-note">
+                Mit dem Absenden werden Ihre Angaben ausschliesslich zur
+                Bearbeitung Ihrer Anfrage verwendet.
+              </p>
+
+
+              <div class="form-consent">
+
+                <input
+                  type="checkbox"
+                  id="privacy-consent"
+                  name="privacy_consent"
+                  value="accepted"
+                  required
+                >
+
+                <label for="privacy-consent">
+                  Ich habe die
+                  <a href="datenschutz.html">
+                    Datenschutzerklärung
+                  </a>
+                  gelesen und stimme der Verarbeitung meiner Daten zur
+                  Bearbeitung meiner Anfrage zu.
+                </label>
+
+              </div>
+
+
+              <button
+                type="submit"
+                class="contact-main contact-submit"
+              >
+
+                <span>
+
+                  <small>
+                    UNVERBINDLICH
+                  </small>
+
+                  Projekt anfragen
+
+                </span>
+
+
+                <b
+                  class="contact-arrow"
+                  aria-hidden="true"
+                ></b>
+
+              </button>
+
+            </div>
+
+
+            <p
+              class="form-status"
+              id="form-status"
+              role="status"
+              aria-live="polite"
+            ></p>
+
+          </form>
 
 
           <p class="contact-email">
@@ -1547,6 +2274,7 @@
           class="contact-trust"
           aria-label="Vorteile der Zusammenarbeit"
         >
+
 
           <span class="contact-trust-label">
             ZUSAMMENARBEIT
@@ -1638,6 +2366,7 @@
 
     <div class="footer-brand-block">
 
+
       <a
         href="#start"
         class="footer-brand"
@@ -1645,10 +2374,12 @@
       >
 
         <img
-          src="Bilder/saentis-logo-transparent.png"
+          src="Bilder/saentis-logo-512.webp"
+          srcset="Bilder/saentis-logo-512.webp 512w, Bilder/saentis-logo-768.webp 768w"
+          sizes="(max-width: 680px) 156px, 178px"
           alt="Säntis Webdesign"
-          width="1254"
-          height="1254"
+          width="512"
+          height="288"
           loading="lazy"
           decoding="async"
         >
@@ -1668,55 +2399,66 @@
     </div>
 
 
-    <nav
-      class="footer-column"
-      aria-label="Footer Navigation"
-    >
+    <div class="footer-links">
 
-      <strong>
-        Navigation
-      </strong>
+      <nav
+        class="footer-column"
+        aria-label="Footer Navigation"
+      >
 
-      <a href="#leistungen">
-        Leistungen
-      </a>
+        <strong>
+          Navigation
+        </strong>
 
-      <a href="#webdesign-st-gallen">
-        Webdesign St. Gallen
-      </a>
+        <a href="#angebot">
+          Angebot
+        </a>
 
-      <a href="#referenzen">
-        Referenz
-      </a>
+        <a href="#leistungen">
+          Leistungen
+        </a>
 
-      <a href="#ablauf">
-        Ablauf
-      </a>
+        <a href="#webdesign-st-gallen">
+          Webdesign St. Gallen
+        </a>
 
-      <a href="#ueber-mich">
-        Über mich
-      </a>
+        <a href="#referenzen">
+          Referenz
+        </a>
 
-      <a href="#kontakt">
-        Kontakt
-      </a>
+        <a href="#ablauf">
+          Ablauf
+        </a>
 
-    </nav>
+        <a href="#ueber-mich">
+          Über mich
+        </a>
+
+        <a href="#kontakt">
+          Kontakt
+        </a>
+
+      </nav>
 
 
-    <div class="footer-column">
+      <nav
+        class="footer-column"
+        aria-label="Rechtliche Hinweise"
+      >
 
-      <strong>
-        Rechtliches
-      </strong>
+        <strong>
+          Rechtliches
+        </strong>
 
-      <a href="impressum.html">
-        Impressum
-      </a>
+        <a href="impressum.html">
+          Impressum
+        </a>
 
-      <a href="datenschutz.html">
-        Datenschutz
-      </a>
+        <a href="datenschutz.html">
+          Datenschutz
+        </a>
+
+      </nav>
 
     </div>
 
@@ -1738,7 +2480,12 @@
 </footer>
 
 
-<script src="script.js?v=1.8"></script>
+<script
+  src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
+  defer
+></script>
+
+<script src="script.js?v=2.4" defer></script>
 
 </body>
 </html>
