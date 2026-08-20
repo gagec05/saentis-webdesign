@@ -1,5 +1,5 @@
 Säntis Webdesign
-Version 3.0
+Version 3.1
 
 Optimierungen:
 - Responsive Layout für Desktop, Tablet und Mobile bereinigt
@@ -11,4 +11,4 @@ Optimierungen:
 - Kontaktbereich neu ausbalanciert
 - Header/Navigation besser proportioniert
 - CSS strukturiert und doppelte Override-Blöcke entfernt
-- Cache-Version auf 3.0 gesetzt
+- Cache-Version auf 3.1 gesetzt

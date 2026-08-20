@@ -51,16 +51,16 @@
   <link
     rel="preload"
     as="image"
-    href="/Bilder/hero-head-1280.webp"
+    href="/Bilder/hero-head-1280-opt.webp"
     type="image/webp"
-    imagesrcset="/Bilder/hero-head-768.webp 768w, /Bilder/hero-head-1280.webp 1280w, /Bilder/hero-head-1672.webp 1672w"
-    imagesizes="(max-width: 480px) calc(100vw - 40px), (max-width: 1100px) min(780px, calc(100vw - 48px)), min(50vw, 780px)"
+    imagesrcset="/Bilder/hero-head-512.webp 512w, /Bilder/hero-head-640.webp 640w, /Bilder/hero-head-720.webp 720w, /Bilder/hero-head-960.webp 960w, /Bilder/hero-head-1280-opt.webp 1280w, /Bilder/hero-head-1672-opt.webp 1672w"
+    imagesizes="(max-width: 480px) calc(100vw - 40px), (max-width: 800px) min(690px, calc(100vw - 48px)), (max-width: 1100px) min(780px, calc(100vw - 48px)), min(50vw, 780px)"
     fetchpriority="high"
   >
 
   <link
     rel="stylesheet"
-    href="style.css?v=3.0"
+    href="style.css?v=3.1"
   >
 
 
@@ -213,7 +213,9 @@
     >
 
       <img
-        src="Bilder/logo-mark-256.png"
+        src="Bilder/logo-mark-192.webp"
+        srcset="Bilder/logo-mark-96.webp 96w, Bilder/logo-mark-128.webp 128w, Bilder/logo-mark-192.webp 192w, Bilder/logo-mark-256.webp 256w"
+        sizes="(max-width: 960px) 54px, 68px"
         alt="Säntis Webdesign"
         width="256"
         height="249"
@@ -405,12 +407,12 @@
 
         <img
           class="hero-stage-image"
-          src="Bilder/hero-head-1280.webp"
-          srcset="Bilder/hero-head-768.webp 768w, Bilder/hero-head-1280.webp 1280w, Bilder/hero-head-1672.webp 1672w"
-          sizes="(max-width: 480px) calc(100vw - 40px), (max-width: 1100px) min(780px, calc(100vw - 48px)), min(50vw, 780px)"
+          src="Bilder/hero-head-1280-opt.webp"
+          srcset="Bilder/hero-head-512.webp 512w, Bilder/hero-head-640.webp 640w, Bilder/hero-head-720.webp 720w, Bilder/hero-head-960.webp 960w, Bilder/hero-head-1280-opt.webp 1280w, Bilder/hero-head-1672-opt.webp 1672w"
+          sizes="(max-width: 480px) calc(100vw - 40px), (max-width: 800px) min(690px, calc(100vw - 48px)), (max-width: 1100px) min(780px, calc(100vw - 48px)), min(50vw, 780px)"
           alt="Säntis Webdesign auf Laptop und Smartphone mit Responsive-Hinweisen"
           width="1280"
-          height="721"
+          height="720"
           fetchpriority="high"
           loading="eager"
           decoding="async"
@@ -689,9 +691,9 @@
         >
           <img
             class="service-device-cutout"
-            src="./Bilder/services-device-cutout-768.webp"
-            srcset="./Bilder/services-device-cutout-768.webp 768w, ./Bilder/services-device-cutout-1280.webp 1280w"
-            sizes="(max-width: 680px) 88vw, (max-width: 1100px) 410px, 28vw"
+            src="./Bilder/services-device-cutout-768-opt.webp"
+            srcset="./Bilder/services-device-cutout-480.webp 480w, ./Bilder/services-device-cutout-512.webp 512w, ./Bilder/services-device-cutout-640.webp 640w, ./Bilder/services-device-cutout-768-opt.webp 768w, ./Bilder/services-device-cutout-960.webp 960w, ./Bilder/services-device-cutout-1280-opt.webp 1280w"
+            sizes="(max-width: 480px) calc(88vw - 42px), (max-width: 800px) min(calc(78vw - 50px), 410px), (max-width: 1100px) calc(44vw - 36px), min(28vw, 440px)"
             alt=""
             loading="lazy"
             decoding="async"
@@ -2185,7 +2187,6 @@
             <div
               id="turnstile-widget"
               data-sitekey="0x4AAAAAAEWsY-4d3wb6xf3v"
-              aria-label="Sicherheitsprüfung"
             ></div>
 
 
@@ -2484,7 +2485,7 @@
   defer
 ></script>
 
-<script src="script.js?v=3.0" defer></script>
+<script src="script.js?v=3.1" defer></script>
 
 </body>
 </html>

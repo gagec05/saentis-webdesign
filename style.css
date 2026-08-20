@@ -453,6 +453,8 @@ button {
    ========================================================= */
 
 .hero {
+    --reveal-start-opacity: 1;
+
     position: relative;
 
     display: grid;
@@ -2705,13 +2707,13 @@ button {
 }
 
 .process-item {
-    --process-node-color: rgba(47, 128, 255, .78);
+    --process-node-color: #246fd6;
     --process-node-background: #fff;
     --process-node-border: rgba(47, 128, 255, .16);
     --process-node-shadow: var(--shadow-soft);
     --process-node-offset: 0px;
-    --process-index-color: var(--blue);
-    --process-eyebrow-color: var(--label-light);
+    --process-index-color: #246fd6;
+    --process-eyebrow-color: #5f7084;
     --process-title-color: var(--ink);
     --process-copy-border: var(--line-light);
 
@@ -3840,7 +3842,7 @@ footer {
    ========================================================= */
 
 .reveal {
-    opacity: 0;
+    opacity: var(--reveal-start-opacity, 0);
 
     transform: translateY(22px);
 
@@ -4123,7 +4125,7 @@ footer {
             inset 0 1px 0 rgba(255, 255, 255, .08);
         --process-node-offset: -3px;
         --process-index-color: var(--cyan);
-        --process-eyebrow-color: var(--blue);
+        --process-eyebrow-color: #246fd6;
         --process-title-color: var(--blue);
         --process-copy-border: rgba(47, 128, 255, .34);
     }
@@ -4285,7 +4287,7 @@ footer {
             inset 0 1px 0 rgba(255, 255, 255, .08);
         --process-node-offset: -3px;
         --process-index-color: var(--cyan);
-        --process-eyebrow-color: var(--blue);
+        --process-eyebrow-color: #246fd6;
         --process-title-color: var(--blue);
         --process-copy-border: rgba(47, 128, 255, .34);
     }

@@ -104,14 +104,13 @@ let turnstileAnfrage =
    2. HEADER BEIM SCROLLEN
 ================================================== */
 
-function headerAktualisieren() {
+function headerAktualisieren(
+    istKompakt
+) {
 
     if (!header) {
         return;
     }
-
-    const istKompakt =
-        window.scrollY > 24;
 
     if (
         headerIstKompakt ===
@@ -307,13 +306,13 @@ let letzterAktiverProcessSchritt =
     null;
 
 
-function processFortschrittAktualisieren() {
+function processZustandLesen() {
 
     if (
         !processListe ||
         processKnoten.length === 0
     ) {
-        return;
+        return null;
     }
 
     const viewportHoehe =
@@ -372,19 +371,6 @@ function processFortschrittAktualisieren() {
     const processFortschritt =
         fortschritt.toFixed(3);
 
-    if (
-        processFortschritt !==
-        letzterProcessFortschritt
-    ) {
-        processListe.style.setProperty(
-            "--process-progress",
-            processFortschritt
-        );
-
-        letzterProcessFortschritt =
-            processFortschritt;
-    }
-
     const verwendetTouchLayout =
         processTouchLayoutAbfrage
             ? processTouchLayoutAbfrage.matches
@@ -407,6 +393,42 @@ function processFortschrittAktualisieren() {
                 )
             )
             : -1;
+
+    return {
+        processFortschritt,
+        aktiverSchritt
+    };
+}
+
+
+function processFortschrittAktualisieren(
+    processZustand
+) {
+
+    if (
+        !processListe ||
+        !processZustand
+    ) {
+        return;
+    }
+
+    const {
+        processFortschritt,
+        aktiverSchritt
+    } = processZustand;
+
+    if (
+        processFortschritt !==
+        letzterProcessFortschritt
+    ) {
+        processListe.style.setProperty(
+            "--process-progress",
+            processFortschritt
+        );
+
+        letzterProcessFortschritt =
+            processFortschritt;
+    }
 
     if (
         aktiverSchritt ===
@@ -525,12 +547,12 @@ function aktivenNavLinkSetzen(
 }
 
 
-function navigationAktualisieren() {
+function navigationZustandLesen() {
 
     if (
         navBereiche.length === 0
     ) {
-        return;
+        return undefined;
     }
 
 
@@ -585,9 +607,7 @@ function navigationAktualisieren() {
             kontaktPosition.top <=
             aktivLinie
         ) {
-
-            aktivenNavLinkSetzen(null);
-            return;
+            return null;
         }
     }
 
@@ -608,10 +628,7 @@ function navigationAktualisieren() {
             ersterBereich.top >
             aktivLinie
         ) {
-
-            aktivenNavLinkSetzen(null);
-
-            return;
+            return null;
         }
 
 
@@ -627,9 +644,7 @@ function navigationAktualisieren() {
     }
 
 
-    aktivenNavLinkSetzen(
-        aktiverBereich.id
-    );
+    return aktiverBereich.id;
 }
 
 
@@ -638,9 +653,31 @@ function seitenzustandAktualisieren() {
     seitenAnimationFrame =
         null;
 
-    navigationAktualisieren();
-    processFortschrittAktualisieren();
-    headerAktualisieren();
+    const headerIstJetztKompakt =
+        window.scrollY > 24;
+
+    const navigationZustand =
+        navigationZustandLesen();
+
+    const processZustand =
+        processZustandLesen();
+
+    if (
+        navigationZustand !==
+        undefined
+    ) {
+        aktivenNavLinkSetzen(
+            navigationZustand
+        );
+    }
+
+    processFortschrittAktualisieren(
+        processZustand
+    );
+
+    headerAktualisieren(
+        headerIstJetztKompakt
+    );
 }
 
 
