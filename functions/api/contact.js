@@ -792,7 +792,9 @@ export async function onRequestPost(
                         "Authorization":
                             `Bearer ${apiKey}`,
                         "Content-Type":
-                            "application/json"
+                            "application/json",
+                        "User-Agent":
+                            "Saentis-Webdesign-Contact/1.0"
                     },
                     body:
                         JSON.stringify({
