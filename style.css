@@ -4379,11 +4379,37 @@ footer {
     }
 
     .service-main {
-        min-height: 450px;
+        min-height: 0;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(260px, 44%);
+        grid-template-areas:
+            "meta meta"
+            "heading image"
+            "copy image"
+            "tags image";
+        align-items: start;
+        column-gap: 24px;
+        padding: 28px 30px 30px;
+    }
+
+    .service-main .service-meta {
+        grid-area: meta;
+    }
+
+    .service-main h3 {
+        grid-area: heading;
+    }
+
+    .service-main > p {
+        grid-area: copy;
+    }
+
+    .service-main .service-tags {
+        grid-area: tags;
     }
 
     .service-side {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
         grid-template-rows: auto;
         gap: 18px;
     }
@@ -4401,8 +4427,20 @@ footer {
     }
 
     .service-device-preview {
-        width: 44%;
-        height: 194px;
+        grid-area: image;
+        position: relative;
+        right: auto;
+        bottom: auto;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 3 / 2;
+        align-self: end;
+        transform: none;
+    }
+
+    .service-device-cutout {
+        left: 0;
+        width: 100%;
     }
 
     .service-strip {
@@ -4882,8 +4920,10 @@ footer {
     }
 
     .service-main {
-        min-height: auto;
-        padding: 28px 24px 198px;
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+        padding: 28px 24px 24px;
     }
 
     .service-main::before,
@@ -4919,11 +4959,15 @@ footer {
     }
 
     .service-device-preview {
-        right: 50%;
-        bottom: 18px;
-        width: min(78%, 410px);
-        height: 236px;
-        transform: translateX(50%);
+        position: relative;
+        right: auto;
+        bottom: auto;
+        width: min(100%, 410px);
+        height: auto;
+        aspect-ratio: 3 / 2;
+        margin: 22px auto 0;
+        align-self: center;
+        transform: none;
     }
 
     .service-side {
@@ -5637,17 +5681,35 @@ footer {
     }
 
     .service-main {
-        padding: 24px 19px 176px;
+        padding: 24px 19px 20px;
     }
 
     .service-main h3 {
-        margin-top: 38px;
+        margin-top: 30px;
         font-size: 28px;
     }
 
+    .service-tags {
+        display: grid;
+        grid-template-columns: repeat(2, max-content);
+        justify-content: center;
+        gap: 8px;
+        margin-top: 18px;
+    }
+
+    .service-tags span {
+        padding: 8px 7px;
+    }
+
+    .service-tags span:last-child {
+        grid-column: 1 / -1;
+        justify-self: center;
+    }
+
     .service-device-preview {
-        width: 88%;
-        height: 194px;
+        width: 100%;
+        height: auto;
+        margin-top: 18px;
     }
 
     .service-panel {
